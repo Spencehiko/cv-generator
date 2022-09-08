@@ -109,14 +109,14 @@ export const useMainStore = defineStore("main", () => {
             type: "reference",
             data: [
                 {
-                    name: "Reference Name",
+                    name: "Name Surname",
                     title: "CEO at Company H",
                     contact: "reference@mail.com",
                 },
                 {
                     name: "Second Reference",
                     title: "CTO at Company Y",
-                    contact: "Second@mail.com",
+                    contact: "second@mail.com",
                 },
             ],
         },
