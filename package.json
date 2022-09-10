@@ -10,10 +10,17 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "-": "^0.0.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "D": "^1.0.0",
     "pinia": "^2.0.21",
     "vue": "^3.2.38"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/vue-fontawesome": "^3.0.1",
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/node": "^16.11.56",
     "@vitejs/plugin-vue": "^3.0.3",
