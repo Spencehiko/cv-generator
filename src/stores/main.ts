@@ -5,13 +5,50 @@ export const useMainStore = defineStore("main", () => {
     const activeHeader = ref("edit" as "edit" | "preview");
     const sections = ref([
         {
+            header: "General Info",
+            type: "info",
+            name: "Info",
+            data: [
+                {
+                    key: "name",
+                    value: "John Doe",
+                },
+                {
+                    key: "title",
+                    value: "Frontend Developer",
+                },
+                {
+                    key: "location",
+                    value: "Some Location",
+                },
+                {
+                    key: "phone",
+                    value: "+90 500 000 00 00",
+                },
+                {
+                    key: "email",
+                    value: "mailname@mail.com",
+                },
+                {
+                    key: "portfolio",
+                    value: "portfolio.com",
+                },
+                {
+                    key: "github",
+                    value: "github.com/githubname",
+                },
+            ],
+        },
+        {
             header: "Summary",
             type: "text",
+            name: "Summary",
             data: ["This is a summary example. You can edit or delete this section."],
         },
         {
             header: "Work Experience",
             type: "date",
+            name: "Experience",
             data: [
                 {
                     company: "Last Company",
@@ -32,6 +69,7 @@ export const useMainStore = defineStore("main", () => {
         {
             header: "Education",
             type: "date",
+            name: "Education",
             data: [
                 {
                     school: "Some Universtity",
@@ -45,10 +83,11 @@ export const useMainStore = defineStore("main", () => {
         {
             header: "Skills",
             type: "rank",
+            name: "Skill",
             data: [
                 {
                     name: "Vue.js",
-                    value: 8,
+                    value: 9,
                     summary: "I worked with Vue.js for many years.",
                 },
                 {
@@ -66,6 +105,7 @@ export const useMainStore = defineStore("main", () => {
         {
             header: "Languages",
             type: "rank",
+            name: "Language",
             data: [
                 {
                     name: "Turkish",
@@ -84,11 +124,13 @@ export const useMainStore = defineStore("main", () => {
         {
             header: "Hobbies",
             type: "list",
+            name: "Hobby",
             data: ["Video games", "Algorithm problems", "Sports", "Yoga"],
         },
         {
             header: "Certificates",
             type: "date",
+            name: "Certificate",
             data: [
                 {
                     company: "A Company",
@@ -107,6 +149,7 @@ export const useMainStore = defineStore("main", () => {
         {
             header: "References",
             type: "reference",
+            name: "Reference",
             data: [
                 {
                     name: "Name Surname",
@@ -123,6 +166,7 @@ export const useMainStore = defineStore("main", () => {
     ] as Array<{
         header: String;
         type: String;
+        name: String;
         data: Array<any>;
     }>);
 

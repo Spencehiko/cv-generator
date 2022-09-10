@@ -3,12 +3,11 @@ import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
 
 const props = defineProps(["sectionIndex"]);
-
 const store = useMainStore();
 const { sections } = storeToRefs(store);
 </script>
 <template>
-    <div>
-        {{ sectionIndex }}
+    <div class="flex flex-row items-center">
+        {{ sections[sectionIndex].data }}
     </div>
 </template>
