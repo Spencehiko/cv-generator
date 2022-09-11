@@ -10,7 +10,7 @@ const { activeHeader } = storeToRefs(store);
 
 <template>
     <div class="h-screen">
-        <header class="h-20 bg-slate-900 text-white flex flex-row justify-center gap-10">
+        <header>
             <HeaderMenu />
         </header>
         <body class="h-screen-20">

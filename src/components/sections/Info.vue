@@ -7,7 +7,9 @@ const store = useMainStore();
 const { sections } = storeToRefs(store);
 </script>
 <template>
-    <div class="flex flex-row items-center">
-        {{ sections[sectionIndex].data }}
+    <div>
+        <div v-for="(info, index) in sections[sectionIndex].data" :key="index" class="flex flex-row my-3">
+            {{ info.key + ": " + info.value }}
+        </div>
     </div>
 </template>
