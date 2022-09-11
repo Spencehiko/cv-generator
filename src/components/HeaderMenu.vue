@@ -5,7 +5,7 @@ import { pages } from "@/constants";
 
 const store = useMainStore();
 const { activeHeader } = storeToRefs(store);
-const { showResetSectionsDialog, exportCV } = store;
+const { showResetDialog, exportCV } = store;
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const { showResetSectionsDialog, exportCV } = store;
             </button>
         </div>
         <div class="ml-auto flex flex-row gap-5 mr-5">
-            <button class="group border rounded border-white text-white h-fit my-auto p-2 transition-all duration-500 hover:text-slate-900 hover:bg-white" @click="showResetSectionsDialog()">
+            <button class="group border rounded border-white text-white h-fit my-auto p-2 transition-all duration-500 hover:text-slate-900 hover:bg-white" @click="showResetDialog()">
                 <font-awesome-icon icon="fa-solid fa-rotate-left" class="w-12 h-4 py-1 hidden group-hover:block" />
                 <span class="w-12 block group-hover:hidden">Reset</span>
             </button>

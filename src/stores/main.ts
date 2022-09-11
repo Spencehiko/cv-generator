@@ -14,32 +14,74 @@ const defaultSections = [
         name: "Info",
         data: [
             {
-                key: "name",
+                key: "Name",
                 value: "John Doe",
+                iconClass: "fa-solid fa-id-badge",
             },
             {
-                key: "title",
+                key: "Title",
                 value: "Frontend Developer",
+                iconClass: "fa-solid fa-briefcase",
             },
             {
-                key: "location",
+                key: "Pronoun",
+                value: "He/Him",
+                iconClass: "fa-solid fa-venus-mars",
+            },
+            {
+                key: "Location",
                 value: "Some Location",
+                iconClass: "fa-solid fa-location-dot",
             },
             {
-                key: "phone",
+                key: "Phone",
                 value: "+90 500 000 00 00",
+                iconClass: "fa-solid fa-phone",
             },
             {
-                key: "email",
+                key: "Email",
                 value: "mailname@mail.com",
+                iconClass: "fa-solid fa-envelope",
             },
             {
-                key: "portfolio",
+                key: "Portfolio",
                 value: "portfolio.com",
+                iconClass: "fa-solid fa-house",
             },
             {
-                key: "github",
+                key: "Github",
                 value: "github.com/githubname",
+                iconClass: "fa-brands fa-github",
+            },
+            {
+                key: "LinkedIn",
+                value: "linkedin.com/linkedinname",
+                iconClass: "fa-brands fa-linkedin",
+            },
+            {
+                key: "Twitter",
+                value: "twitter.com/twittername",
+                iconClass: "fa-brands fa-twitter",
+            },
+            {
+                key: "Facebook",
+                value: "facebook.com/facebookname",
+                iconClass: "fa-brands fa-facebook",
+            },
+            {
+                key: "Instagram",
+                value: "instagram.com/instagramname",
+                iconClass: "fa-brands fa-instagram",
+            },
+            {
+                key: "Youtube",
+                value: "youtube.com/youtubename",
+                iconClass: "fa-brands fa-youtube",
+            },
+            {
+                key: "Discord",
+                value: "discord.com/discordname",
+                iconClass: "fa-brands fa-discord",
             },
         ],
     },
@@ -189,7 +231,7 @@ export const useMainStore = defineStore({
         deleteItem(sectionIndex: number, itemIndex: number) {
             this.sections[sectionIndex].data.splice(itemIndex, 1);
         },
-        showResetSectionsDialog() {
+        showResetDialog() {
             this.confirm = {
                 message: "Are you sure to reset all your progress?",
                 onSuccess: this.resetSections,
