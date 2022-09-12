@@ -9,7 +9,7 @@ const store = useMainStore();
 const { sections } = storeToRefs(store);
 </script>
 <template>
-    <div class="px-5">
+    <div>
         <draggable :list="sections[sectionIndex].data" item-key="rank-drag">
             <template #item="{ index }">
                 <div class="my-5 hover:cursor-move flex flex-col gap-5">

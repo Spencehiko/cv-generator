@@ -16,7 +16,7 @@ const { deleteItem } = store;
 <template>
     <div v-for="(section, index) in sections" :key="index" class="px-10 py-4">
         <div class="flex flex-row border-b-2 pb-1">
-            <h4 class="font-bold">{{ section.header }}</h4>
+            <h4 class="text-xl font-bold">{{ section.header }}</h4>
             <div class="ml-auto flex flex-row gap-3">
                 <button v-if="section.type !== 'text' && section.type !== 'info'" class="rounded border border-green-500 p-1 hover:bg-green-500 hover:text-white transition duration-500">
                     Add {{ section.name }}

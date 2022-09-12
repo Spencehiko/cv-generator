@@ -13,7 +13,7 @@ const { sections } = storeToRefs(store);
         <draggable class="w-full cursor-move" :list="sections[sectionIndex].data" item-key="date-drag">
             <template #item="{ index }">
                 <div class="flex flex-row items-center w-full">
-                    <div class="w-full my-3 flex flex-col justify-between gap-2">
+                    <div class="w-full my-3 flex flex-col justify-between gap-1">
                         <div class="flex flex-row justify-between w-full">
                             <div>
                                 <input
