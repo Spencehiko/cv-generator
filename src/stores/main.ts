@@ -100,7 +100,7 @@ const defaultSections = [
                 company: "Last Company",
                 title: "Frontend Developer",
                 startDate: "01/2022",
-                endDate: null,
+                endDate: "NOW",
                 summary: "In this company, I worked as a Frontend Developer and I participated in many projects.",
             },
             {
@@ -118,7 +118,7 @@ const defaultSections = [
         name: "Education",
         data: [
             {
-                school: "Some Universtity",
+                school: "Some University",
                 department: "Some Engineering",
                 startDate: "2018",
                 endDate: "2022",
