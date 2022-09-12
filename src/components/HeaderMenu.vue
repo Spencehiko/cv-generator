@@ -9,8 +9,9 @@ const { showResetDialog, exportCV } = store;
 </script>
 
 <template>
-    <div class="h-20 bg-slate-900 text-white flex flex-row justify-center">
-        <div class="ml-auto flex flex-row justify-center gap-5">
+    <div class="h-20 bg-slate-900 text-white flex flex-row justify-between items-center">
+        <span class="ml-5">CV Generator</span>
+        <div class="flex flex-row justify-center gap-5 ml-auto">
             <button
                 v-for="page in pages"
                 :key="page.name"
