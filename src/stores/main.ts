@@ -1,9 +1,16 @@
 import { defineStore } from "pinia";
 
+interface Input {
+    type: String;
+    name: String;
+    label: String;
+}
+
 interface Section {
     header: String;
     type: String;
     name: String;
+    inputs: Array<Input>;
     data: Array<any>;
 }
 
@@ -12,6 +19,18 @@ const defaultSections = [
         header: "General Info",
         type: "info",
         name: "Info",
+        inputs: [
+            {
+                type: "input",
+                name: "key",
+                label: "Name",
+            },
+            {
+                type: "input",
+                name: "value",
+                label: "Value",
+            },
+        ],
         data: [
             {
                 key: "Name",
@@ -89,12 +108,46 @@ const defaultSections = [
         header: "Summary",
         type: "text",
         name: "Summary",
+        inputs: [
+            {
+                type: "textarea",
+                name: "",
+                label: "Summary",
+            },
+        ],
         data: ["This is a summary example. You can edit or delete this section."],
     },
     {
         header: "Work Experience",
         type: "date",
         name: "Experience",
+        inputs: [
+            {
+                type: "input",
+                name: "company",
+                label: "Company",
+            },
+            {
+                type: "input",
+                name: "title",
+                label: "Title",
+            },
+            {
+                type: "input",
+                name: "startDate",
+                label: "Start Date",
+            },
+            {
+                type: "input",
+                name: "endDate",
+                label: "End Date",
+            },
+            {
+                type: "textarea",
+                name: "summary",
+                label: "Summary",
+            },
+        ],
         data: [
             {
                 company: "Last Company",
@@ -116,13 +169,40 @@ const defaultSections = [
         header: "Education",
         type: "date",
         name: "Education",
+        inputs: [
+            {
+                type: "input",
+                name: "school",
+                label: "School",
+            },
+            {
+                type: "input",
+                name: "department",
+                label: "Department",
+            },
+            {
+                type: "input",
+                name: "startDate",
+                label: "Start Date",
+            },
+            {
+                type: "input",
+                name: "endDate",
+                label: "End Date",
+            },
+            {
+                type: "input",
+                name: "gpa",
+                label: "GPA",
+            },
+        ],
         data: [
             {
                 school: "Some University",
                 department: "Some Engineering",
                 startDate: "2018",
                 endDate: "2022",
-                gpa: 3.14,
+                gpa: "3.14",
             },
         ],
     },
@@ -130,6 +210,23 @@ const defaultSections = [
         header: "Skills",
         type: "rank",
         name: "Skill",
+        inputs: [
+            {
+                type: "input",
+                name: "name",
+                label: "Name",
+            },
+            {
+                type: "input",
+                name: "value",
+                label: "Grade",
+            },
+            {
+                type: "textarea",
+                name: "summary",
+                label: "Summary",
+            },
+        ],
         data: [
             {
                 name: "Vue.js",
@@ -152,6 +249,18 @@ const defaultSections = [
         header: "Languages",
         type: "rank",
         name: "Language",
+        inputs: [
+            {
+                type: "input",
+                name: "name",
+                label: "Name",
+            },
+            {
+                type: "input",
+                name: "value",
+                label: "Grade",
+            },
+        ],
         data: [
             {
                 name: "Turkish",
@@ -171,12 +280,41 @@ const defaultSections = [
         header: "Hobbies",
         type: "list",
         name: "Hobby",
+        inputs: [
+            {
+                type: "list",
+                name: "name",
+                label: "Hobby Name",
+            },
+        ],
         data: ["Video games", "Algorithm problems", "Sports", "Yoga"],
     },
     {
         header: "Certificates",
         type: "date",
         name: "Certificate",
+        inputs: [
+            {
+                type: "input",
+                name: "company",
+                label: "Company",
+            },
+            {
+                type: "input",
+                name: "title",
+                label: "Title",
+            },
+            {
+                type: "input",
+                name: "startDate",
+                label: "Start Date",
+            },
+            {
+                type: "textarea",
+                name: "summary",
+                label: "Summary",
+            },
+        ],
         data: [
             {
                 company: "A Company",
@@ -196,6 +334,23 @@ const defaultSections = [
         header: "References",
         type: "reference",
         name: "Reference",
+        inputs: [
+            {
+                type: "input",
+                name: "name",
+                label: "Name",
+            },
+            {
+                type: "input",
+                name: "title",
+                label: "Title",
+            },
+            {
+                type: "input",
+                name: "contact",
+                label: "Contact",
+            },
+        ],
         data: [
             {
                 name: "Name Surname",
@@ -217,32 +372,44 @@ export const useMainStore = defineStore({
         activeHeader: "edit" as "edit" | "preview",
         sections: JSON.parse(JSON.stringify(defaultSections)) as Array<Section>,
         alert: {
+            show: false as boolean,
             message: "" as String,
             duration: 0 as number,
             type: null as null | "success" | "error",
         },
         confirm: {
+            show: false as boolean,
             message: "" as String,
             onSuccess: null as any,
+        },
+        deleteSectionIndex: -1 as number,
+        addDialog: {
+            show: false as boolean,
+            inputs: [] as Array<any>,
+            sectionIndex: -1 as number,
         },
     }),
     getters: {},
     actions: {
-        deleteItem(sectionIndex: number, itemIndex: number) {
-            this.sections[sectionIndex].data.splice(itemIndex, 1);
-        },
-        showResetDialog() {
-            this.confirm = {
-                message: "Are you sure to reset all your progress?",
-                onSuccess: this.resetSections,
-            };
+        exportCV() {
+            console.log("Will be developed soon!");
         },
         resetSections() {
             this.sections = JSON.parse(JSON.stringify(defaultSections));
+            this.confirm.show = false;
             this.confirm.message = "";
         },
-        exportCV() {
-            console.log("Will be developed soon!");
+        deleteSection() {
+            this.sections.splice(this.deleteSectionIndex, 1);
+            this.confirm.show = false;
+            this.confirm.message = "";
+            this.deleteSectionIndex = -1;
+        },
+        deleteItem(sectionIndex: number, itemIndex: number) {
+            this.sections[sectionIndex].data.splice(itemIndex, 1);
+        },
+        addItem() {
+            console.log("ADD");
         },
         showAlert(message: String, duration: number) {
             clearTimeout(this.alert.duration);
@@ -250,6 +417,26 @@ export const useMainStore = defineStore({
             this.alert.duration = setTimeout(() => {
                 this.alert.message = "";
             }, duration);
+        },
+        showResetDialog() {
+            this.confirm = {
+                show: true,
+                message: "Are you sure to reset all your progress?",
+                onSuccess: this.resetSections,
+            };
+        },
+        showDeleteSectionDialog(index: number) {
+            this.deleteSectionIndex = index;
+            this.confirm = {
+                show: true,
+                message: "Are you sure to delete this section?",
+                onSuccess: this.deleteSection,
+            };
+        },
+        showAddDialog(sectionIndex: number, inputs: Array<any>) {
+            this.addDialog.inputs = inputs;
+            this.addDialog.sectionIndex = sectionIndex;
+            this.addDialog.show = true;
         },
     },
     persist: true,

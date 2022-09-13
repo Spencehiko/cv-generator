@@ -10,7 +10,7 @@ import ReferenceSection from "@/components/sections/Reference.vue";
 
 const store = useMainStore();
 const { sections } = storeToRefs(store);
-const { deleteItem } = store;
+const { deleteItem, showDeleteSectionDialog, showAddDialog } = store;
 </script>
 
 <template>
@@ -18,10 +18,14 @@ const { deleteItem } = store;
         <div class="flex flex-row border-b-2 pb-1">
             <h4 class="text-xl font-bold">{{ section.header }}</h4>
             <div class="ml-auto flex flex-row gap-3">
-                <button v-if="section.type !== 'text' && section.type !== 'info'" class="rounded border border-green-500 p-1 hover:bg-green-500 hover:text-white transition duration-500">
+                <button
+                    v-if="section.type !== 'text' && section.type !== 'info'"
+                    class="rounded border border-green-500 p-1 hover:bg-green-500 hover:text-white transition duration-500"
+                    @click="showAddDialog(index, section.inputs)"
+                >
                     Add {{ section.name }}
                 </button>
-                <button class="rounded border border-red-500 p-1 hover:bg-red-500 hover:text-white transition duration-500">Delete Section</button>
+                <button class="rounded border border-red-500 p-1 hover:bg-red-500 hover:text-white transition duration-500" @click="showDeleteSectionDialog(index)">Delete Section</button>
             </div>
         </div>
         <InfoSection v-if="section.type === 'info'" class="my-2" :sectionIndex="index" @deleteItem="deleteItem" />
