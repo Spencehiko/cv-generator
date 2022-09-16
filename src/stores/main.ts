@@ -24,11 +24,13 @@ const defaultSections = [
                 type: "input",
                 name: "key",
                 label: "Name",
+                value: "",
             },
             {
                 type: "input",
                 name: "value",
                 label: "Value",
+                value: "",
             },
         ],
         data: [
@@ -113,6 +115,7 @@ const defaultSections = [
                 type: "textarea",
                 name: "",
                 label: "Summary",
+                value: "",
             },
         ],
         data: ["This is a summary example. You can edit or delete this section."],
@@ -126,26 +129,31 @@ const defaultSections = [
                 type: "input",
                 name: "company",
                 label: "Company",
+                value: "",
             },
             {
                 type: "input",
                 name: "title",
                 label: "Title",
+                value: "",
             },
             {
                 type: "input",
                 name: "startDate",
                 label: "Start Date",
+                value: "",
             },
             {
                 type: "input",
                 name: "endDate",
                 label: "End Date",
+                value: "",
             },
             {
                 type: "textarea",
                 name: "summary",
                 label: "Summary",
+                value: "",
             },
         ],
         data: [
@@ -174,26 +182,31 @@ const defaultSections = [
                 type: "input",
                 name: "school",
                 label: "School",
+                value: "",
             },
             {
                 type: "input",
                 name: "department",
                 label: "Department",
+                value: "",
             },
             {
                 type: "input",
                 name: "startDate",
                 label: "Start Date",
+                value: "",
             },
             {
                 type: "input",
                 name: "endDate",
                 label: "End Date",
+                value: "",
             },
             {
                 type: "input",
                 name: "gpa",
                 label: "GPA",
+                value: "",
             },
         ],
         data: [
@@ -215,16 +228,19 @@ const defaultSections = [
                 type: "input",
                 name: "name",
                 label: "Name",
+                value: "",
             },
             {
                 type: "input",
                 name: "value",
                 label: "Grade",
+                value: "",
             },
             {
                 type: "textarea",
                 name: "summary",
                 label: "Summary",
+                value: "",
             },
         ],
         data: [
@@ -254,11 +270,13 @@ const defaultSections = [
                 type: "input",
                 name: "name",
                 label: "Name",
+                value: "",
             },
             {
                 type: "input",
                 name: "value",
                 label: "Grade",
+                value: "",
             },
         ],
         data: [
@@ -285,6 +303,7 @@ const defaultSections = [
                 type: "list",
                 name: "name",
                 label: "Hobby Name",
+                value: "",
             },
         ],
         data: ["Video games", "Algorithm problems", "Sports", "Yoga"],
@@ -298,21 +317,25 @@ const defaultSections = [
                 type: "input",
                 name: "company",
                 label: "Company",
+                value: "",
             },
             {
                 type: "input",
                 name: "title",
                 label: "Title",
+                value: "",
             },
             {
                 type: "input",
                 name: "startDate",
                 label: "Start Date",
+                value: "",
             },
             {
                 type: "textarea",
                 name: "summary",
                 label: "Summary",
+                value: "",
             },
         ],
         data: [
@@ -339,16 +362,19 @@ const defaultSections = [
                 type: "input",
                 name: "name",
                 label: "Name",
+                value: "",
             },
             {
                 type: "input",
                 name: "title",
                 label: "Title",
+                value: "",
             },
             {
                 type: "input",
                 name: "contact",
                 label: "Contact",
+                value: "",
             },
         ],
         data: [
@@ -408,8 +434,9 @@ export const useMainStore = defineStore({
         deleteItem(sectionIndex: number, itemIndex: number) {
             this.sections[sectionIndex].data.splice(itemIndex, 1);
         },
-        addItem() {
-            console.log("ADD");
+        addItem(newItems: object) {
+            (this.sections[this.addDialog.sectionIndex] as any).data.push(newItems);
+            this.addDialog.show = false;
         },
         showAlert(message: String, duration: number) {
             clearTimeout(this.alert.duration);
