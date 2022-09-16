@@ -7,10 +7,17 @@ import ListSection from "@/components/sections/List.vue";
 import RankSection from "@/components/sections/Rank.vue";
 import TextSection from "@/components/sections/Text.vue";
 import ReferenceSection from "@/components/sections/Reference.vue";
+import { onMounted } from "vue";
 
 const store = useMainStore();
 const { sections } = storeToRefs(store);
-const { deleteItem, showDeleteSectionDialog, showAddDialog } = store;
+const { deleteItem, showDeleteSectionDialog, showAddDialog, resetSections } = store;
+
+onMounted(() => {
+    if (sections.value.length === 0) {
+        resetSections();
+    }
+});
 </script>
 
 <template>

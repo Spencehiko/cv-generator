@@ -1,15 +1,18 @@
 <script lang="ts" setup>
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+
 import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
-import { onMounted, ref } from "vue";
 
 const store = useMainStore();
 const { addDialog } = storeToRefs(store);
 const { addItem } = store;
 const addItems = () => {
-    const newItems = [] as Array<any>;
+    const newItems = {} as any;
     addDialog.value.inputs.forEach((input: any) => {
         newItems[input.name] = input.value;
+        input.value = null;
     });
     addItem(newItems);
 };
@@ -20,10 +23,18 @@ const addItems = () => {
             <div v-for="(input, index) in addDialog.inputs" :key="index" class="flex flex-row justify-between gap-5 my-5">
                 <label :for="input.name">{{ input.label + ":" }}</label>
                 <input
-                    v-if="input.type === 'input'"
+                    v-if="input.type === 'input' && !input.name.toLowerCase().includes('date')"
                     :id="input.name"
                     v-model="input.value"
                     class="w-60 bg-slate-500 border border-transparent pl-1 rounded outline-none hover:border-gray-400 focus:border-gray-800"
+                />
+                <Datepicker
+                    v-if="input.type === 'input' && input.name.toLowerCase().includes('date')"
+                    v-model="input.value"
+                    :id="input.name"
+                    class="w-60 text-white bg-slate-500 border border-transparent pl-1 rounded outline-none hover:border-gray-400 focus:border-gray-800"
+                    monthPicker
+                    :clearable="false"
                 />
                 <textarea
                     v-if="input.type === 'textarea'"
@@ -40,3 +51,10 @@ const addItems = () => {
         </div>
     </div>
 </template>
+<style>
+.dp__input {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+}
+</style>

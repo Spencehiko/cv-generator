@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import draggable from "vuedraggable";
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+
 import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
 
@@ -28,12 +31,14 @@ const { sections } = storeToRefs(store);
                                 />
                             </div>
                             <div class="flex flex-row gap-2 font-semibold text-gray-600">
-                                <input v-model="sections[sectionIndex].data[index].startDate" class="w-16 border border-transparent rounded outline-none hover:border-gray-400 focus:border-gray-800" />
+                                <Datepicker v-model="sections[sectionIndex].data[index].startDate" class="w-28 rounded outline-none mr-5" monthPicker :clearable="false" />
                                 <span v-if="sections[sectionIndex].data[index].endDate">-</span>
-                                <input
+                                <Datepicker
                                     v-if="sections[sectionIndex].data[index].endDate"
-                                    v-model="sections[sectionIndex].data[index].endDate"
-                                    class="w-16 text-right border border-transparent rounded outline-none hover:border-gray-400 focus:border-gray-800"
+                                    v-model="sections[sectionIndex].data[index].startDate"
+                                    class="w-28 rounded outline-none mr-5"
+                                    monthPicker
+                                    :clearable="false"
                                 />
                             </div>
                         </div>

@@ -31,9 +31,11 @@ library.add(
     faDiscord,
     faYoutube
 );
-/*  Font Awesome    */
-
-const app = createApp(App).component("font-awesome-icon", FontAwesomeIcon);
+/*  Date Picker    */
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+/*     */
+const app = createApp(App).component("font-awesome-icon", FontAwesomeIcon).component("Datepicker", Datepicker);
 const pinia = createPinia();
 
 pinia.use(piniaPluginPersistedstate);

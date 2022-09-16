@@ -1,3 +1,4 @@
+import { faL } from "@fortawesome/free-solid-svg-icons";
 import { defineStore } from "pinia";
 
 interface Input {
@@ -160,15 +161,24 @@ const defaultSections = [
             {
                 company: "Last Company",
                 title: "Frontend Developer",
-                startDate: "01/2022",
-                endDate: "NOW",
+                startDate: {
+                    month: 7,
+                    year: 2022,
+                },
+                endDate: "",
                 summary: "In this company, I worked as a Frontend Developer and I participated in many projects.",
             },
             {
                 company: "First Company",
                 title: "Junior Frontend Developer",
-                startDate: "06/2021",
-                endDate: "12/2021",
+                startDate: {
+                    month: 7,
+                    year: 2021,
+                },
+                endDate: {
+                    month: 11,
+                    year: 2021,
+                },
                 summary: "In this first company, I worked as a Junior Frontend Developer and I participated in many projects.",
             },
         ],
@@ -213,8 +223,14 @@ const defaultSections = [
             {
                 school: "Some University",
                 department: "Some Engineering",
-                startDate: "2018",
-                endDate: "2022",
+                startDate: {
+                    month: 5,
+                    year: 2018,
+                },
+                endDate: {
+                    month: 1,
+                    year: 2022,
+                },
                 gpa: "3.14",
             },
         ],
@@ -328,7 +344,7 @@ const defaultSections = [
             {
                 type: "input",
                 name: "startDate",
-                label: "Start Date",
+                label: "Date",
                 value: "",
             },
             {
@@ -342,13 +358,19 @@ const defaultSections = [
             {
                 company: "A Company",
                 title: "First Certificate",
-                startDate: "06/2021",
+                startDate: {
+                    month: 2,
+                    year: 2019,
+                },
                 summary: "I earned this certificate in a course in A Company.",
             },
             {
                 company: "B Company",
                 title: "Second Certificate",
-                startDate: "11/2021",
+                startDate: {
+                    month: 8,
+                    year: 2019,
+                },
                 summary: "I earned this certificate in a course in B Company.",
             },
         ],
@@ -392,11 +414,17 @@ const defaultSections = [
     },
 ];
 
+const defaultAddDialog = {
+    show: false,
+    inputs: [],
+    sectionIndex: -1,
+};
+
 export const useMainStore = defineStore({
     id: "store",
     state: () => ({
         activeHeader: "edit" as "edit" | "preview",
-        sections: JSON.parse(JSON.stringify(defaultSections)) as Array<Section>,
+        sections: [] as Array<Section>,
         alert: {
             show: false as boolean,
             message: "" as String,
@@ -435,7 +463,11 @@ export const useMainStore = defineStore({
             this.sections[sectionIndex].data.splice(itemIndex, 1);
         },
         addItem(newItems: object) {
-            (this.sections[this.addDialog.sectionIndex] as any).data.push(newItems);
+            console.log(newItems);
+            console.log("this.sections[this.addDialog.sectionIndex]", this.sections[this.addDialog.sectionIndex].data);
+            this.sections[this.addDialog.sectionIndex].data.push(newItems);
+            this.addDialog.inputs = [];
+            this.addDialog.sectionIndex = -1;
             this.addDialog.show = false;
         },
         showAlert(message: String, duration: number) {
