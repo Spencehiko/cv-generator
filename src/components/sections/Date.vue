@@ -32,10 +32,10 @@ const { sections } = storeToRefs(store);
                             </div>
                             <div class="flex flex-row gap-2 font-semibold text-gray-600">
                                 <Datepicker v-model="sections[sectionIndex].data[index].startDate" class="w-28 rounded outline-none mr-5" monthPicker :clearable="false" />
-                                <span v-if="sections[sectionIndex].data[index].endDate">-</span>
+                                <span v-if="sections[sectionIndex].data[index].endDate" class="my-auto mr-5">-</span>
                                 <Datepicker
                                     v-if="sections[sectionIndex].data[index].endDate"
-                                    v-model="sections[sectionIndex].data[index].startDate"
+                                    v-model="sections[sectionIndex].data[index].endDate"
                                     class="w-28 rounded outline-none mr-5"
                                     monthPicker
                                     :clearable="false"

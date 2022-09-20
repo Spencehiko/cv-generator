@@ -165,7 +165,7 @@ const defaultSections = [
                     month: 7,
                     year: 2022,
                 },
-                endDate: "",
+                endDate: null,
                 summary: "In this company, I worked as a Frontend Developer and I participated in many projects.",
             },
             {
@@ -414,7 +414,7 @@ const defaultSections = [
     },
 ];
 
-const defaultAddDialog = {
+export const defaultAddDialog = {
     show: false,
     inputs: [],
     sectionIndex: -1,
@@ -435,6 +435,7 @@ export const useMainStore = defineStore({
             show: false as boolean,
             message: "" as String,
             onSuccess: null as any,
+            onError: null as any,
         },
         deleteSectionIndex: -1 as number,
         addDialog: {
@@ -442,6 +443,7 @@ export const useMainStore = defineStore({
             inputs: [] as Array<any>,
             sectionIndex: -1 as number,
         },
+        newItems: [] as Array<any>,
     }),
     getters: {},
     actions: {
@@ -462,17 +464,27 @@ export const useMainStore = defineStore({
         deleteItem(sectionIndex: number, itemIndex: number) {
             this.sections[sectionIndex].data.splice(itemIndex, 1);
         },
-        addItem(newItems: object) {
-            console.log(newItems);
-            console.log("this.sections[this.addDialog.sectionIndex]", this.sections[this.addDialog.sectionIndex].data);
-            this.sections[this.addDialog.sectionIndex].data.push(newItems);
+        addItem() {
+            this.sections[this.addDialog.sectionIndex].data.push(this.newItems);
+            for (const input of this.sections[this.addDialog.sectionIndex].inputs) {
+                (input as any).value = "";
+            }
             this.addDialog.inputs = [];
             this.addDialog.sectionIndex = -1;
             this.addDialog.show = false;
+            this.confirm.show = false;
         },
-        showAlert(message: String, duration: number) {
+        closeConfirmDialog() {
+            this.confirm.show = false;
+        },
+        closeConfirmDialogAndReopenAddDialog() {
+            this.confirm.show = false;
+            this.addDialog.show = true;
+        },
+        showAlert(message: String, duration: number, alertType: null | "success" | "error") {
             clearTimeout(this.alert.duration);
             this.alert.message = message;
+            this.alert.type = alertType;
             this.alert.duration = setTimeout(() => {
                 this.alert.message = "";
             }, duration);
@@ -482,6 +494,16 @@ export const useMainStore = defineStore({
                 show: true,
                 message: "Are you sure to reset all your progress?",
                 onSuccess: this.resetSections,
+                onError: this.closeConfirmDialog,
+            };
+        },
+        showConfirmDialog() {
+            this.addDialog.show = false;
+            this.confirm = {
+                show: true,
+                message: "Some areas are left blank. Are you sure to continue?",
+                onSuccess: this.addItem,
+                onError: this.closeConfirmDialogAndReopenAddDialog,
             };
         },
         showDeleteSectionDialog(index: number) {
@@ -490,6 +512,7 @@ export const useMainStore = defineStore({
                 show: true,
                 message: "Are you sure to delete this section?",
                 onSuccess: this.deleteSection,
+                onError: this.closeConfirmDialog,
             };
         },
         showAddDialog(sectionIndex: number, inputs: Array<any>) {

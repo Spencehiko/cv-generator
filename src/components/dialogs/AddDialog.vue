@@ -6,33 +6,41 @@ import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
 
 const store = useMainStore();
-const { addDialog } = storeToRefs(store);
-const { addItem } = store;
+const { addDialog, newItems } = storeToRefs(store);
+const { addItem, showConfirmDialog } = store;
 const addItems = () => {
-    const newItems = {} as any;
-    addDialog.value.inputs.forEach((input: any) => {
-        newItems[input.name] = input.value;
-        input.value = null;
-    });
-    addItem(newItems);
+    const itemsToAdd = {} as any;
+    let isBlank = false;
+    for (const input of addDialog.value.inputs) {
+        if (input.value === null || input.value?.toString().trim() === "") {
+            isBlank = true;
+        }
+        itemsToAdd[input.name] = input.value;
+    }
+    newItems.value = itemsToAdd;
+    if (isBlank) {
+        showConfirmDialog();
+    } else {
+        addItem();
+    }
 };
 </script>
 <template>
-    <div v-if="addDialog.show" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white rounded-lg text-xl font-bold text-center p-10">
+    <div v-if="addDialog.show" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-black rounded-lg text-xl font-bold text-center p-10">
         <div>
             <div v-for="(input, index) in addDialog.inputs" :key="index" class="flex flex-row justify-between gap-5 my-5">
-                <label :for="input.name">{{ input.label + ":" }}</label>
+                <label :for="input.name" class="text-white text-ellipsis">{{ input.label + ":" }}</label>
                 <input
                     v-if="input.type === 'input' && !input.name.toLowerCase().includes('date')"
                     :id="input.name"
                     v-model="input.value"
-                    class="w-60 bg-slate-500 border border-transparent pl-1 rounded outline-none hover:border-gray-400 focus:border-gray-800"
+                    class="w-60 bg-white border border-transparent pl-1 rounded outline-none hover:border-gray-400 focus:border-gray-800"
                 />
                 <Datepicker
                     v-if="input.type === 'input' && input.name.toLowerCase().includes('date')"
                     v-model="input.value"
                     :id="input.name"
-                    class="w-60 text-white bg-slate-500 border border-transparent pl-1 rounded outline-none hover:border-gray-400 focus:border-gray-800"
+                    class="w-60 bg-white border border-transparent pl-1 rounded outline-none hover:border-gray-400 focus:border-gray-800"
                     monthPicker
                     :clearable="false"
                 />
@@ -40,7 +48,7 @@ const addItems = () => {
                     v-if="input.type === 'textarea'"
                     :id="input.name"
                     v-model="input.value"
-                    class="w-60 bg-slate-500 border border-transparent pl-1 rounded outline-none hover:border-gray-400 focus:border-gray-800"
+                    class="w-60 bg-white border border-transparent pl-1 rounded outline-none hover:border-gray-400 focus:border-gray-800"
                     rows="3"
                 />
             </div>
