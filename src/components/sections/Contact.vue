@@ -7,7 +7,9 @@ const store = useMainStore();
 const { sections } = storeToRefs(store);
 </script>
 <template>
-    <div class="flex flex-row items-center">
-        <textarea v-model="sections[sectionIndex].data[0]" class="w-full border border-transparent rounded outline-none hover:border-gray-400 focus:border-gray-800"> </textarea>
+    <div class="flex flex-row flex-wrap justify-between">
+        <div class="" v-for="(data, index) in sections[sectionIndex].data" :key="index">
+            {{ data }}
+        </div>
     </div>
 </template>

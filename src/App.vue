@@ -1,23 +1,21 @@
 <script setup lang="ts">
 import HeaderMenu from "./components/HeaderMenu.vue";
 import AllSections from "./components/AllSections.vue";
-import { useMainStore, defaultAddDialog } from "@/stores/main";
+import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
-import AlertDialog from "./components/dialogs/AlertDialog.vue";
-import ConfirmDialog from "./components/dialogs/ConfirmDialog.vue";
-import AddDialog from "./components/dialogs/AddDialog.vue";
 import { onMounted } from "vue";
 
 const store = useMainStore();
-const { activeHeader, confirm, alert, addDialog } = storeToRefs(store);
+const { activeHeader } = storeToRefs(store);
+const { setDefaultSections } = store;
 
 onMounted(() => {
-    addDialog.value = defaultAddDialog;
+    setDefaultSections();
 });
 </script>
 
 <template>
-    <div class="h-screen" :class="[confirm.show || alert.show || addDialog.show ? ['blur', 'overflow-hidden', 'pointer-events-none'] : '']">
+    <div class="h-screen" :class="[false ? ['blur', 'overflow-hidden', 'pointer-events-none'] : '']">
         <header>
             <HeaderMenu />
         </header>
@@ -25,7 +23,4 @@ onMounted(() => {
             <AllSections v-if="activeHeader === 'edit'" />
         </body>
     </div>
-    <AlertDialog />
-    <ConfirmDialog />
-    <AddDialog />
 </template>
