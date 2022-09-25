@@ -6,11 +6,11 @@ import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 
 const store = useMainStore();
-const { activeHeader } = storeToRefs(store);
+const { activeHeader, sections } = storeToRefs(store);
 const { setDefaultSections } = store;
 
 onMounted(() => {
-    setDefaultSections();
+    if (!sections.value.length) setDefaultSections();
 });
 </script>
 

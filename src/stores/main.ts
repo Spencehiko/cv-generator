@@ -12,13 +12,14 @@ interface Section {
     buttons: Array<string>;
     inputs: Array<any>;
     data: Array<any>;
+    isHidden: boolean;
 }
 
 export const defaultSections = [
     {
         header: "General Info",
         name: "General",
-        buttons: ["edit"],
+        buttons: [],
         inputs: [
             {
                 firstName: {
@@ -83,11 +84,12 @@ export const defaultSections = [
                 schoolDate: "",
             },
         ],
+        isHidden: false,
     },
     {
         header: "Contact Info",
         name: "Contact",
-        buttons: ["edit", "delete", "add"],
+        buttons: [],
         inputs: [
             {
                 email: {
@@ -145,11 +147,12 @@ export const defaultSections = [
                 twitter: "",
             },
         ],
+        isHidden: false,
     },
     {
         header: "Personal Info",
         name: "Personal",
-        buttons: ["edit", "delete"],
+        buttons: [],
         inputs: [
             {
                 birthOfDate: {
@@ -186,11 +189,12 @@ export const defaultSections = [
                 hobbies: "",
             },
         ],
+        isHidden: false,
     },
     {
         header: "Work Experience",
         name: "Experience",
-        buttons: ["add", "delete"],
+        buttons: ["add"],
         inputs: [
             {
                 companyName: {
@@ -259,11 +263,12 @@ export const defaultSections = [
                 workStyle: "fulltime",
             },
         ],
+        isHidden: false,
     },
     {
         header: "Skills",
         name: "Skill",
-        buttons: ["edit"],
+        buttons: ["add"],
         inputs: [
             {
                 name: {
@@ -272,10 +277,40 @@ export const defaultSections = [
                     inputLabel: "Skill Name",
                     required: true,
                 },
-                value: {
+                skill: {
                     type: "input",
                     inputType: "range",
                     inputLabel: "Skill Points (out of 10)",
+                    required: true,
+                },
+                experience: {
+                    type: "input",
+                    inputType: "select",
+                    inputLabel: "Experience",
+                    inputOptions: [
+                        {
+                            name: "< 1 Year",
+                            value: 1,
+                        },
+                        {
+                            name: "1-3 Years",
+                            value: 2,
+                        },
+                        {
+                            name: "3-5 Years",
+                            value: 3,
+                        },
+                        {
+                            name: "5+ Years",
+                            value: 4,
+                        },
+                    ],
+                    required: true,
+                },
+                summary: {
+                    type: "input",
+                    inputType: "text",
+                    inputLabel: "Summary",
                     required: true,
                 },
             },
@@ -283,30 +318,41 @@ export const defaultSections = [
         data: [
             {
                 name: "Vue.js",
-                value: 7,
+                skill: 7,
+                experience: 2,
+                summary: "Used Vue.js in many projects.",
             },
             {
                 name: "TypeScript",
-                value: 6,
+                skill: 6,
+                experience: 2,
+                summary: "Used TypeScript in many projects.",
             },
             {
                 name: "JavaScript",
-                value: 8,
+                skill: 8,
+                experience: 3,
+                summary: "Used JavaScript in many projects.",
             },
             {
                 name: "Tailwind CSS",
-                value: 6,
+                skill: 6,
+                experience: 1,
+                summary: "Used Tailwind CSS in many projects.",
             },
             {
                 name: "HTML",
-                value: 9,
+                skill: 9,
+                experience: 3,
+                summary: "Used HTML in many projects.",
             },
         ],
+        isHidden: false,
     },
     {
         header: "Languages",
         name: "Language",
-        buttons: ["edit", "delete"],
+        buttons: ["add"],
         inputs: [
             {
                 name: {
@@ -337,6 +383,39 @@ export const defaultSections = [
                 value: 3,
             },
         ],
+        isHidden: false,
+    },
+    {
+        header: "Projects",
+        name: "Project",
+        buttons: ["add"],
+        inputs: [
+            {
+                name: {
+                    type: "input",
+                    inputType: "text",
+                    inputLabel: "Project Name",
+                    required: true,
+                },
+                link: {
+                    type: "input",
+                    inputType: "text",
+                    inputLabel: "Link to Project",
+                    required: true,
+                },
+            },
+        ],
+        data: [
+            {
+                name: "1st Project Name",
+                link: "https://firstproject.com/",
+            },
+            {
+                name: "2nd Project Name",
+                link: "https://secondproject.com/",
+            },
+        ],
+        isHidden: false,
     },
     {
         header: "References",
@@ -349,6 +428,30 @@ export const defaultSections = [
                     inputType: "text",
                     inputLabel: "Reference Name",
                     required: true,
+                },
+                companyName: {
+                    type: "input",
+                    inputType: "text",
+                    inputLabel: "Company Name",
+                    required: true,
+                },
+                title: {
+                    type: "input",
+                    inputType: "text",
+                    inputLabel: "Title",
+                    required: true,
+                },
+                email: {
+                    type: "input",
+                    inputType: "text",
+                    inputLabel: "E-Mail",
+                    required: false,
+                },
+                phone: {
+                    type: "input",
+                    inputType: "text",
+                    inputLabel: "Phone Number",
+                    required: false,
                 },
             },
         ],
@@ -368,8 +471,11 @@ export const defaultSections = [
                 phone: "+21 543 76 98",
             },
         ],
+        isHidden: false,
     },
 ] as Array<Section>;
+
+export const experienceLevels = ["", "< 1 Year", "1-3 Years", "3-5 Years", "5+ Years"];
 
 export const useMainStore = defineStore({
     id: "store",
@@ -386,9 +492,18 @@ export const useMainStore = defineStore({
         exportCV() {
             console.log("Will be developed soon!");
         },
-        deleteSection() {
-            this.sections.splice(this.deleteSectionIndex, 1);
-            this.deleteSectionIndex = -1;
+        toggleHideSection(index: number) {
+            this.sections[index].isHidden = !this.sections[index].isHidden;
+        },
+        editData(sectionIndex: number, index: number) {
+            console.log(sectionIndex);
+            console.log(index);
+        },
+        moveUpData(sectionIndex: number, index: number) {
+            [this.sections[sectionIndex].data[index], this.sections[sectionIndex].data[index - 1]] = [this.sections[sectionIndex].data[index - 1], this.sections[sectionIndex].data[index]];
+        },
+        moveDownData(sectionIndex: number, index: number) {
+            [this.sections[sectionIndex].data[index], this.sections[sectionIndex].data[index + 1]] = [this.sections[sectionIndex].data[index + 1], this.sections[sectionIndex].data[index]];
         },
     },
     persist: true,

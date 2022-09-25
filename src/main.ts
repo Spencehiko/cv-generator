@@ -8,7 +8,7 @@ import "./index.css";
 /*  Font Awesome    */
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faIdBadge, faBriefcase, faPhone, faEnvelope, faLocationDot, faHouse, faFileExport, faRotateLeft, faVenusMars } from "@fortawesome/free-solid-svg-icons";
+import { faIdBadge, faBriefcase, faPhone, faEnvelope, faLocationDot, faHouse, faFileExport, faRotateLeft, faVenusMars, faPen, faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faFacebook, faInstagram, faLinkedin, faGithub, faDiscord, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -22,6 +22,9 @@ library.add(
     faFileExport,
     faRotateLeft,
     faVenusMars,
+    faPen,
+    faCaretUp,
+    faCaretDown,
     // Brands
     faTwitter,
     faFacebook,
