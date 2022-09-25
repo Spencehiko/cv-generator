@@ -52,8 +52,8 @@ export const defaultSections = [
                 required: true,
             },
             summary: {
-                type: "input",
-                inputType: "text",
+                type: "textarea",
+                inputType: "",
                 inputLabel: "Summary",
                 required: true,
             },
@@ -82,8 +82,8 @@ export const defaultSections = [
                 required: true,
             },
             graduationDate: {
-                type: "input",
-                inputType: "date",
+                type: "date",
+                inputType: "",
                 inputLabel: "Graduation Date",
                 required: false,
             },
@@ -97,7 +97,7 @@ export const defaultSections = [
             schoolStatus: true,
             schoolName: "Some University",
             schoolDepartmant: "Some Department",
-            graduationDate: "01/2021",
+            graduationDate: { month: 0, year: 2021 },
         },
         isHidden: false,
     },
@@ -170,8 +170,8 @@ export const defaultSections = [
         buttons: ["edit"],
         inputs: {
             birthOfDate: {
-                type: "input",
-                inputType: "date",
+                type: "date",
+                inputType: "",
                 inputLabel: "Birth of Date",
                 required: false,
             },
@@ -195,7 +195,7 @@ export const defaultSections = [
             },
         },
         data: {
-            birthOfDate: "",
+            birthOfDate: null,
             gender: "",
             pronoun: "",
             hobbies: "",
@@ -222,14 +222,14 @@ export const defaultSections = [
                 required: true,
             },
             startDate: {
-                type: "input",
-                inputType: "date",
+                type: "date",
+                inputType: "",
                 inputLabel: "Start Date",
                 required: true,
             },
             endDate: {
-                type: "input",
-                inputType: "date",
+                type: "date",
+                inputType: "",
                 inputLabel: "End Date",
                 required: false,
             },
@@ -253,8 +253,8 @@ export const defaultSections = [
                 required: true,
             },
             summary: {
-                type: "input",
-                inputType: "textarea",
+                type: "textarea",
+                inputType: "",
                 inputLabel: "Summary",
                 required: false,
             },
@@ -269,8 +269,8 @@ export const defaultSections = [
             {
                 companyName: "3rd Company",
                 title: "Frontend Developer",
-                startDate: "01/2022",
-                endDate: "",
+                startDate: { month: 0, year: 2022 },
+                endDate: null,
                 companyLocation: "Istanbul / Turkey",
                 companyWebsite: "thirdcompany.abcd",
                 workStyle: "fulltime",
@@ -280,8 +280,8 @@ export const defaultSections = [
             {
                 companyName: "2nd Company",
                 title: "Frontend Developer",
-                startDate: "06/2021",
-                endDate: "12/2021",
+                startDate: { month: 5, year: 2021 },
+                endDate: { month: 11, year: 2021 },
                 companyLocation: "Istanbul / Turkey",
                 companyWebsite: "secondcompany.abcd",
                 workStyle: "fulltime",
@@ -291,8 +291,8 @@ export const defaultSections = [
             {
                 companyName: "1st Company",
                 title: "Junior Frontend Developer",
-                startDate: "01/2021",
-                endDate: "06/2021",
+                startDate: { month: 0, year: 2021 },
+                endDate: { month: 4, year: 2021 },
                 companyLocation: "",
                 companyWebsite: "firstcompany.abcd",
                 workStyle: "fulltime",
@@ -346,8 +346,8 @@ export const defaultSections = [
                 required: true,
             },
             summary: {
-                type: "input",
-                inputType: "textarea",
+                type: "textarea",
+                inputType: "",
                 inputLabel: "Summary",
                 required: true,
             },
@@ -516,6 +516,8 @@ export const useMainStore = defineStore({
     id: "store",
     state: () => ({
         activeHeader: "edit" as "edit" | "preview",
+        activeSectionIndex: -1 as number,
+        activeSectionData: [] as Array<any>,
         sections: [] as Array<Section>,
         deleteSectionIndex: -1 as number,
     }),
@@ -533,7 +535,17 @@ export const useMainStore = defineStore({
             console.log("index", index);
         },
         openEditSectionDialog(index: number) {
-            console.log("index", index);
+            this.activeSectionData = JSON.parse(JSON.stringify(this.sections[index].data));
+            this.activeSectionIndex = index;
+        },
+        saveChanges() {
+            this.sections[this.activeSectionIndex].data = this.activeSectionData;
+            this.activeSectionData = [];
+            this.activeSectionIndex = -1;
+        },
+        closeEditSectionDialog() {
+            this.activeSectionData = [];
+            this.activeSectionIndex = -1;
         },
         toggleHideSection(index: number) {
             this.sections[index].isHidden = !this.sections[index].isHidden;

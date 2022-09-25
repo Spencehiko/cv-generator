@@ -17,6 +17,7 @@ import {
     faTrash,
     faCaretUp,
     faCaretDown,
+    faX,
     // section titles
     faHouse,
     faEnvelope,
@@ -29,17 +30,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
-    // Solid
-    faIdCard,
-    faBriefcase,
-    faEnvelope,
-    faHouse,
+    // header buttons
     faFileExport,
     faRotateLeft,
+    // buttons
     faPen,
+    faTrash,
     faCaretUp,
     faCaretDown,
-    faTrash,
+    faX,
+    // section titles
+    faHouse,
+    faEnvelope,
+    faIdCard,
+    faBriefcase,
     faStar,
     faLanguage,
     faFolder,

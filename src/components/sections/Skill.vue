@@ -16,7 +16,7 @@ const { sections } = storeToRefs(store);
                 <th class="border p-3 text-center w-20">Sort</th>
                 <th class="border p-3">Skill Name</th>
                 <th class="border p-3 text-center">Proficiency</th>
-                <th class="border p-3">Experience</th>
+                <th class="border p-3 text-center">Experience</th>
                 <th class="border p-3">Summary</th>
                 <th class="border p-3 text-center w-20">Edit</th>
                 <th class="border p-3 text-center w-20">Delete</th>
@@ -27,7 +27,7 @@ const { sections } = storeToRefs(store);
                 <SortButton class="border p-2 text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <td class="border p-3">{{ data.name }}</td>
                 <td class="border text-center p-3">{{ data.skill + " / 10" }}</td>
-                <td class="border p-3">{{ experienceLevels[data.experience] }}</td>
+                <td class="border text-center p-3">{{ experienceLevels[data.experience] }}</td>
                 <td class="border p-3">{{ data.summary }}</td>
                 <EditButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <DeleteButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />

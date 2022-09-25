@@ -4,9 +4,10 @@ import AllSections from "./components/AllSections.vue";
 import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
+import EditSection from "./components/dialogs/EditSection.vue";
 
 const store = useMainStore();
-const { activeHeader, sections } = storeToRefs(store);
+const { activeHeader, sections, activeSectionIndex } = storeToRefs(store);
 const { setDefaultSections } = store;
 
 onMounted(() => {
@@ -15,7 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="h-screen" :class="[false ? ['blur', 'overflow-hidden', 'pointer-events-none'] : '']">
+    <div :class="[activeSectionIndex !== -1 ? ['blur', 'pointer-events-none', 'select-none'] : '']">
         <header>
             <HeaderMenu />
         </header>
@@ -23,4 +24,5 @@ onMounted(() => {
             <AllSections v-if="activeHeader === 'edit'" />
         </body>
     </div>
+    <EditSection v-if="activeSectionIndex !== -1" />
 </template>
