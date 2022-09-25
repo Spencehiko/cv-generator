@@ -8,31 +8,42 @@ import "./index.css";
 /*  Font Awesome    */
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faIdBadge, faBriefcase, faPhone, faEnvelope, faLocationDot, faHouse, faFileExport, faRotateLeft, faVenusMars, faPen, faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { faTwitter, faFacebook, faInstagram, faLinkedin, faGithub, faDiscord, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import {
+    // header buttons
+    faFileExport,
+    faRotateLeft,
+    // buttons
+    faPen,
+    faTrash,
+    faCaretUp,
+    faCaretDown,
+    // section titles
+    faHouse,
+    faEnvelope,
+    faIdCard,
+    faBriefcase,
+    faStar,
+    faLanguage,
+    faFolder,
+    faUserTie,
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(
     // Solid
-    faIdBadge,
+    faIdCard,
     faBriefcase,
-    faPhone,
     faEnvelope,
-    faLocationDot,
     faHouse,
     faFileExport,
     faRotateLeft,
-    faVenusMars,
     faPen,
     faCaretUp,
     faCaretDown,
-    // Brands
-    faTwitter,
-    faFacebook,
-    faInstagram,
-    faLinkedin,
-    faGithub,
-    faDiscord,
-    faYoutube
+    faTrash,
+    faStar,
+    faLanguage,
+    faFolder,
+    faUserTie
 );
 /*  Date Picker    */
 import Datepicker from "@vuepic/vue-datepicker";

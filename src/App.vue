@@ -19,7 +19,7 @@ onMounted(() => {
         <header>
             <HeaderMenu />
         </header>
-        <body class="h-screen-20">
+        <body class="pb-4">
             <AllSections v-if="activeHeader === 'edit'" />
         </body>
     </div>
