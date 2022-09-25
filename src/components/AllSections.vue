@@ -20,7 +20,7 @@ const allSections: any = {
 
 const store = useMainStore();
 const { sections } = storeToRefs(store);
-const { toggleHideSection } = store;
+const { toggleHideSection, openAddSectionDialog, openEditSectionDialog } = store;
 </script>
 
 <template>
@@ -28,8 +28,20 @@ const { toggleHideSection } = store;
         <div class="flex flex-row border-b-2 pb-1">
             <h4 class="text-xl font-bold"><font-awesome-icon :icon="section.icon" /> {{ section.header }}</h4>
             <div class="ml-auto flex flex-row gap-3">
-                <button v-if="section.buttons.includes('add')" class="rounded border border-green-500 p-1 hover:bg-green-500 hover:text-white transition duration-500">Add</button>
-                <button v-if="section.buttons.includes('edit')" class="rounded border border-yellow-500 p-1 hover:bg-yellow-500 hover:text-white transition duration-500">Edit</button>
+                <button
+                    v-if="section.buttons.includes('add')"
+                    class="rounded border border-green-500 p-1 hover:bg-green-500 hover:text-white transition duration-500"
+                    @click="openAddSectionDialog(index)"
+                >
+                    Add
+                </button>
+                <button
+                    v-if="section.buttons.includes('edit')"
+                    class="rounded border border-yellow-500 p-1 hover:bg-yellow-500 hover:text-white transition duration-500"
+                    @click="openEditSectionDialog(index)"
+                >
+                    Edit
+                </button>
                 <button
                     class="rounded border hover:text-white transition duration-500"
                     :class="[section.isHidden ? ' border-green-500 p-1 hover:bg-green-500' : ' border-red-500 p-1 hover:bg-red-500']"
@@ -39,6 +51,6 @@ const { toggleHideSection } = store;
                 </button>
             </div>
         </div>
-        <component :is="(allSections[section.component as any])" class="my-2 transition-all duration-500" :sectionIndex="index" :class="[section.isHidden ? ' blur-sm' : '']"></component>
+        <component :is="(allSections[section.component as any])" class="my-5 transition-all duration-500" :sectionIndex="index" :class="[section.isHidden ? ' blur-sm' : '']"></component>
     </div>
 </template>

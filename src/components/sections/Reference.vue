@@ -29,7 +29,9 @@ const { sections } = storeToRefs(store);
                 <td class="border p-3">{{ data.name }}</td>
                 <td class="border p-3">{{ data.companyName }}</td>
                 <td class="border p-3">{{ data.title }}</td>
-                <td class="border p-3">{{ data.email }}</td>
+                <td class="border p-3 text-blue-400">
+                    <a target="_blank" :href="'mailto:' + data.email"> {{ data.email }}</a>
+                </td>
                 <td class="border p-3 whitespace-nowrap">{{ data.phone }}</td>
                 <EditButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <DeleteButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />

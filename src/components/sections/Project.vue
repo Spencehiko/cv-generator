@@ -24,7 +24,9 @@ const { sections } = storeToRefs(store);
             <tr v-for="(data, index) in sections[sectionIndex].data" :key="index">
                 <SortButton class="border p-2 text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <td class="border p-3">{{ data.name }}</td>
-                <td class="border p-3">{{ data.link }}</td>
+                <td class="border p-3 text-blue-400">
+                    <a target="_blank" :href="data.link"> {{ data.link }}</a>
+                </td>
                 <EditButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <DeleteButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />
             </tr>

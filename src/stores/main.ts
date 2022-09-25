@@ -17,6 +17,14 @@ interface Section {
     isHidden: boolean;
 }
 
+export const experienceLevels = ["", "< 1 Year", "1-3 Years", "3-5 Years", "5+ Years"];
+export const workStyleOptions = {
+    fulltime: "Full Time",
+    parttime: "Part Time",
+    intern: "Intern",
+    freelance: "Freelance",
+};
+
 export const defaultSections = [
     {
         header: "General Info",
@@ -49,6 +57,12 @@ export const defaultSections = [
                 inputLabel: "Summary",
                 required: true,
             },
+            portfolio: {
+                type: "input",
+                inputType: "text",
+                inputLabel: "Portfolio Link",
+                required: false,
+            },
             schoolStatus: {
                 type: "input",
                 inputType: "checkbox",
@@ -79,6 +93,7 @@ export const defaultSections = [
             lastName: "Doe",
             title: "Frontend Developer",
             summary: "A passionate Frontend Developer that is keen to learn new technologies. Worked over 5 years in different scale of companies and developed big scaled projects.",
+            portfolio: "https://hicaku.com",
             schoolStatus: true,
             schoolName: "Some University",
             schoolDepartmant: "Some Department",
@@ -206,6 +221,18 @@ export const defaultSections = [
                 inputLabel: "Job Title",
                 required: true,
             },
+            startDate: {
+                type: "input",
+                inputType: "date",
+                inputLabel: "Start Date",
+                required: true,
+            },
+            endDate: {
+                type: "input",
+                inputType: "date",
+                inputLabel: "End Date",
+                required: false,
+            },
             companyLocation: {
                 type: "input",
                 inputType: "text",
@@ -222,41 +249,55 @@ export const defaultSections = [
                 type: "input",
                 inputType: "select",
                 inputLabel: "Work Style",
-                inputOptions: [
-                    {
-                        name: "Full-Time",
-                        value: "fulltime",
-                    },
-                    {
-                        name: "Part-Time",
-                        value: "parttime",
-                    },
-                    {
-                        name: "Intern",
-                        value: "intern",
-                    },
-                    {
-                        name: "Freelance",
-                        value: "freelance",
-                    },
-                ],
+                inputOptions: workStyleOptions,
+                required: true,
+            },
+            summary: {
+                type: "input",
+                inputType: "textarea",
+                inputLabel: "Summary",
+                required: false,
+            },
+            isStillWorkingHere: {
+                type: "input",
+                inputType: "checkbox",
+                inputLabel: "Are you still working here?",
                 required: true,
             },
         },
         data: [
             {
-                companyName: "1st Company",
-                title: "Junior Frontend Developer",
+                companyName: "3rd Company",
+                title: "Frontend Developer",
+                startDate: "01/2022",
+                endDate: "",
                 companyLocation: "Istanbul / Turkey",
-                companyWebsite: "firstcompany.abcd",
+                companyWebsite: "thirdcompany.abcd",
                 workStyle: "fulltime",
+                summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla justo sed tempor malesuada. Nam ex est, ornare nec massa.",
+                isStillWorkingHere: true,
             },
             {
                 companyName: "2nd Company",
                 title: "Frontend Developer",
-                companyLocation: "",
+                startDate: "06/2021",
+                endDate: "12/2021",
+                companyLocation: "Istanbul / Turkey",
                 companyWebsite: "secondcompany.abcd",
                 workStyle: "fulltime",
+                summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla justo sed tempor malesuada. Nam ex est, ornare nec massa.",
+                isStillWorkingHere: false,
+            },
+            {
+                companyName: "1st Company",
+                title: "Junior Frontend Developer",
+                startDate: "01/2021",
+                endDate: "06/2021",
+                companyLocation: "",
+                companyWebsite: "firstcompany.abcd",
+                workStyle: "fulltime",
+                summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis magna urna, quis maximus risus vestibulum in. Aliquam erat volutpat.",
+                isStillWorkingHere: false,
             },
         ],
         isHidden: false,
@@ -471,8 +512,6 @@ export const defaultSections = [
     },
 ] as Array<Section>;
 
-export const experienceLevels = ["", "< 1 Year", "1-3 Years", "3-5 Years", "5+ Years"];
-
 export const useMainStore = defineStore({
     id: "store",
     state: () => ({
@@ -485,12 +524,21 @@ export const useMainStore = defineStore({
         setDefaultSections() {
             this.sections = defaultSections;
         },
+        // Header Button Actions
         exportCV() {
             console.log("Will be developed soon!");
+        },
+        // Table Header Button Actions
+        openAddSectionDialog(index: number) {
+            console.log("index", index);
+        },
+        openEditSectionDialog(index: number) {
+            console.log("index", index);
         },
         toggleHideSection(index: number) {
             this.sections[index].isHidden = !this.sections[index].isHidden;
         },
+        // Table Button Actions
         editData(sectionIndex: number, index: number) {
             console.log(sectionIndex);
             console.log(index);
