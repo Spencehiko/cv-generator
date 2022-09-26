@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMainStore, experienceLevels } from "@/stores/main";
+import { useMainStore, experienceOptions } from "@/stores/main";
 import { storeToRefs } from "pinia";
 import SortButton from "@/components/table/SortButton.vue";
 import EditButton from "@/components/table/EditButton.vue";
@@ -27,7 +27,7 @@ const { sections } = storeToRefs(store);
                 <SortButton class="border p-2 text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <td class="border p-3">{{ data.name }}</td>
                 <td class="border text-center p-3">{{ data.skill + " / 10" }}</td>
-                <td class="border text-center p-3">{{ experienceLevels[data.experience] }}</td>
+                <td class="border text-center p-3">{{ experienceOptions[data.experience] }}</td>
                 <td class="border p-3">{{ data.summary }}</td>
                 <EditButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <DeleteButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />

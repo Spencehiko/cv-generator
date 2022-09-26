@@ -2,6 +2,7 @@
 import { useMainStore, workStyleOptions } from "@/stores/main";
 import { storeToRefs } from "pinia";
 import EditButton from "@/components/table/EditButton.vue";
+import DeleteButton from "@/components/table/DeleteButton.vue";
 
 const props = defineProps(["sectionIndex"]);
 const store = useMainStore();
@@ -41,6 +42,7 @@ const { sections } = storeToRefs(store);
                 </div>
             </td>
             <EditButton class="text-center w-20" :sectionIndex="sectionIndex" :index="index" />
+            <DeleteButton class="text-center w-20" :sectionIndex="sectionIndex" :index="index" />
         </tr>
     </table>
 </template>

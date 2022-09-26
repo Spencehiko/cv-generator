@@ -17,12 +17,17 @@ interface Section {
     isHidden: boolean;
 }
 
-export const experienceLevels = ["", "< 1 Year", "1-3 Years", "3-5 Years", "5+ Years"];
 export const workStyleOptions = {
     fulltime: "Full Time",
     parttime: "Part Time",
     intern: "Intern",
     freelance: "Freelance",
+};
+export const experienceOptions: any = {
+    1: "< 1 Year",
+    2: "1-3 Years",
+    3: "3-5 Years",
+    4: "5+ Years",
 };
 
 export const defaultSections = [
@@ -316,8 +321,8 @@ export const defaultSections = [
                 required: true,
             },
             skill: {
-                type: "input",
-                inputType: "range",
+                type: "range",
+                inputType: "",
                 inputLabel: "Skill Points (out of 10)",
                 required: true,
             },
@@ -325,24 +330,7 @@ export const defaultSections = [
                 type: "input",
                 inputType: "select",
                 inputLabel: "Experience",
-                inputOptions: [
-                    {
-                        name: "< 1 Year",
-                        value: 1,
-                    },
-                    {
-                        name: "1-3 Years",
-                        value: 2,
-                    },
-                    {
-                        name: "3-5 Years",
-                        value: 3,
-                    },
-                    {
-                        name: "5+ Years",
-                        value: 4,
-                    },
-                ],
+                inputOptions: experienceOptions,
                 required: true,
             },
             summary: {
@@ -400,8 +388,8 @@ export const defaultSections = [
                 required: true,
             },
             value: {
-                type: "input",
-                inputType: "range",
+                type: "range",
+                inputType: "",
                 inputLabel: "Language Proficiency (out of 10)",
                 required: true,
             },
@@ -516,10 +504,14 @@ export const useMainStore = defineStore({
     id: "store",
     state: () => ({
         activeHeader: "edit" as "edit" | "preview",
+        sections: [] as Array<Section>,
+        // edit section
         activeSectionIndex: -1 as number,
         activeSectionData: [] as Array<any>,
-        sections: [] as Array<Section>,
-        deleteSectionIndex: -1 as number,
+        // edit data
+        activeDataSectionIndex: -1 as number,
+        activeDataIndex: -1 as number,
+        activeData: [] as Array<any>,
     }),
     getters: {},
     actions: {
@@ -534,6 +526,7 @@ export const useMainStore = defineStore({
         openAddSectionDialog(index: number) {
             console.log("index", index);
         },
+        // Edit Section
         openEditSectionDialog(index: number) {
             this.activeSectionData = JSON.parse(JSON.stringify(this.sections[index].data));
             this.activeSectionIndex = index;
@@ -550,15 +543,29 @@ export const useMainStore = defineStore({
         toggleHideSection(index: number) {
             this.sections[index].isHidden = !this.sections[index].isHidden;
         },
-        // Table Button Actions
-        editData(sectionIndex: number, index: number) {
-            console.log(sectionIndex);
-            console.log(index);
+        // Edit Data
+        openEditDataDialog(sectionIndex: number, index: number) {
+            this.activeDataSectionIndex = sectionIndex;
+            this.activeDataIndex = index;
+            this.activeData = JSON.parse(JSON.stringify(this.sections[sectionIndex].data[index]));
+        },
+        saveChangesOnData() {
+            this.sections[this.activeDataSectionIndex].data[this.activeDataIndex] = this.activeData;
+            this.activeDataSectionIndex = -1;
+            this.activeDataIndex = -1;
+            this.activeData = [];
+        },
+        closeEditDataDialog() {
+            this.activeDataSectionIndex = -1;
+            this.activeDataIndex = -1;
+            this.activeData = [];
         },
         deleteData(sectionIndex: number, index: number) {
-            console.log(sectionIndex);
-            console.log(index);
+            this.activeData = JSON.parse(JSON.stringify(this.sections[index].data[sectionIndex]));
+            this.activeDataSectionIndex = -1;
+            this.activeDataIndex = -1;
         },
+        // Table Button Actions
         moveUpData(sectionIndex: number, index: number) {
             [this.sections[sectionIndex].data[index], this.sections[sectionIndex].data[index - 1]] = [this.sections[sectionIndex].data[index - 1], this.sections[sectionIndex].data[index]];
         },

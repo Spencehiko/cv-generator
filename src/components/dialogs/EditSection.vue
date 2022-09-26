@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMainStore, experienceLevels } from "@/stores/main";
+import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
 
 import Datepicker from "@vuepic/vue-datepicker";
@@ -32,7 +32,7 @@ const { closeEditSectionDialog, saveChanges } = store;
                 :class="[data.inputType === 'checkbox' ? 'w-4 h-4' : '']"
             />
             <textarea v-if="data.type === 'textarea'" v-model="activeSectionData[dataKey]" rows="3" class="border border-black rounded p-1 outline-none" />
-            <Datepicker v-if="data.type === 'date'" v-model="activeSectionData[dataKey]" monthPicker :clearable="false" class="border border-black rounded outline-none" />
+            <Datepicker v-if="data.type === 'date'" v-model="activeSectionData[dataKey]" monthPicker class="border border-black rounded outline-none" />
             <span v-if="data.inputType === 'checkbox'">{{ activeSectionData[dataKey] ? "Yes" : "No" }}</span>
         </div>
         <!-- FOOTER -->

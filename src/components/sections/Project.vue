@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMainStore, experienceLevels } from "@/stores/main";
+import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
 import SortButton from "@/components/table/SortButton.vue";
 import EditButton from "@/components/table/EditButton.vue";

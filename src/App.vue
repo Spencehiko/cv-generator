@@ -5,9 +5,10 @@ import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 import EditSection from "./components/dialogs/EditSection.vue";
+import EditData from "./components/dialogs/EditData.vue";
 
 const store = useMainStore();
-const { activeHeader, sections, activeSectionIndex } = storeToRefs(store);
+const { activeHeader, sections, activeSectionIndex, activeDataIndex } = storeToRefs(store);
 const { setDefaultSections } = store;
 
 onMounted(() => {
@@ -16,7 +17,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div :class="[activeSectionIndex !== -1 ? ['blur', 'pointer-events-none', 'select-none', ' overflow-y-hidden', 'h-screen'] : '']">
+    <div :class="[activeSectionIndex !== -1 || activeDataIndex !== -1 ? ['blur', 'pointer-events-none', 'select-none', ' overflow-y-hidden', 'h-screen'] : '']">
         <header>
             <HeaderMenu />
         </header>
@@ -25,4 +26,5 @@ onMounted(() => {
         </body>
     </div>
     <EditSection v-if="activeSectionIndex !== -1" />
+    <EditData v-if="activeDataIndex !== -1" />
 </template>
