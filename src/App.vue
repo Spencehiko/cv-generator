@@ -16,7 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div :class="[activeSectionIndex !== -1 ? ['blur', 'pointer-events-none', 'select-none'] : '']">
+    <div :class="[activeSectionIndex !== -1 ? ['blur', 'pointer-events-none', 'select-none', ' overflow-y-hidden', 'h-screen'] : '']">
         <header>
             <HeaderMenu />
         </header>

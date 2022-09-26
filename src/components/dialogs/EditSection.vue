@@ -10,7 +10,7 @@ const { sections, activeSectionIndex, activeSectionData } = storeToRefs(store);
 const { closeEditSectionDialog, saveChanges } = store;
 </script>
 <template>
-    <div class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border-2 w-1/2 overflow-auto">
+    <div class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border-2 w-1/2 overflow-auto max-h-screen-20">
         <!-- HEADER -->
         <div class="flex justify-between items-center border-b-2 p-2">
             <span class="font-bold">Edit {{ sections[activeSectionIndex].header }}</span>
@@ -22,11 +22,18 @@ const { closeEditSectionDialog, saveChanges } = store;
             </button>
         </div>
         <!-- BODY -->
-        <div v-for="(data, dataKey) in sections[activeSectionIndex].inputs" :key="dataKey" class="p-2 inline-flex flex-col w-1/2">
+        <div v-for="(data, dataKey) in sections[activeSectionIndex].inputs" :key="dataKey" class="p-2 flex w-3/4" :class="[data.inputType === 'checkbox' ? 'flex-row items-center gap-2' : 'flex-col']">
             <span class="w-40 mb-1">{{ data.inputLabel }}</span>
-            <input v-if="data.type === 'input'" v-model="activeSectionData[dataKey]" :type="data.inputType" class="border border-black rounded p-1 outline-none" />
+            <input
+                v-if="data.type === 'input'"
+                v-model="activeSectionData[dataKey]"
+                :type="data.inputType"
+                class="border border-black rounded p-1 outline-none"
+                :class="[data.inputType === 'checkbox' ? 'w-4 h-4' : '']"
+            />
             <textarea v-if="data.type === 'textarea'" v-model="activeSectionData[dataKey]" rows="3" class="border border-black rounded p-1 outline-none" />
             <Datepicker v-if="data.type === 'date'" v-model="activeSectionData[dataKey]" monthPicker :clearable="false" class="border border-black rounded outline-none" />
+            <span v-if="data.inputType === 'checkbox'">{{ activeSectionData[dataKey] ? "Yes" : "No" }}</span>
         </div>
         <!-- FOOTER -->
         <div class="flex justify-end border-t-2 p-2 gap-2">
