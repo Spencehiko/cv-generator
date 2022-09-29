@@ -505,6 +505,7 @@ export const useMainStore = defineStore({
     state: () => ({
         activeHeader: "edit" as "edit" | "preview",
         sections: [] as Array<Section>,
+        scrollPosition: 0 as number,
         // edit section
         activeSectionIndex: -1 as number,
         activeSectionData: [] as Array<any>,
@@ -512,6 +513,12 @@ export const useMainStore = defineStore({
         activeDataSectionIndex: -1 as number,
         activeDataIndex: -1 as number,
         activeData: [] as Array<any>,
+        // add data
+        activeAddSectionIndex: -1 as number,
+        activeAddData: [] as Array<any>,
+        // delete data
+        activeDeleteSectionIndex: -1 as number,
+        activeDeleteDataIndex: -1 as number,
     }),
     getters: {},
     actions: {
@@ -522,12 +529,9 @@ export const useMainStore = defineStore({
         exportCV() {
             console.log("Will be developed soon!");
         },
-        // Table Header Button Actions
-        openAddSectionDialog(index: number) {
-            console.log("index", index);
-        },
         // Edit Section
         openEditSectionDialog(index: number) {
+            this.scrollPosition = window.scrollY;
             this.activeSectionData = JSON.parse(JSON.stringify(this.sections[index].data));
             this.activeSectionIndex = index;
         },
@@ -539,12 +543,16 @@ export const useMainStore = defineStore({
         closeEditSectionDialog() {
             this.activeSectionData = [];
             this.activeSectionIndex = -1;
+            setTimeout(() => {
+                window.scrollTo(0, this.scrollPosition);
+            }, 0);
         },
         toggleHideSection(index: number) {
             this.sections[index].isHidden = !this.sections[index].isHidden;
         },
         // Edit Data
         openEditDataDialog(sectionIndex: number, index: number) {
+            this.scrollPosition = window.scrollY;
             this.activeDataSectionIndex = sectionIndex;
             this.activeDataIndex = index;
             this.activeData = JSON.parse(JSON.stringify(this.sections[sectionIndex].data[index]));
@@ -559,11 +567,30 @@ export const useMainStore = defineStore({
             this.activeDataSectionIndex = -1;
             this.activeDataIndex = -1;
             this.activeData = [];
+            setTimeout(() => {
+                window.scrollTo(0, this.scrollPosition);
+            }, 0);
         },
+        // Delete Data
         deleteData(sectionIndex: number, index: number) {
-            this.activeData = JSON.parse(JSON.stringify(this.sections[index].data[sectionIndex]));
-            this.activeDataSectionIndex = -1;
-            this.activeDataIndex = -1;
+            this.sections[sectionIndex].data.splice(index, 1);
+        },
+        // Add Data,
+        openAddDialog(sectionIndex: number) {
+            this.scrollPosition = window.scrollY;
+            this.activeAddSectionIndex = sectionIndex;
+        },
+        addData() {
+            this.sections[this.activeAddSectionIndex].data.push(Object.assign({}, this.activeAddData));
+            console.log(this.sections[this.activeAddSectionIndex]);
+            this.closeAddDialog();
+        },
+        closeAddDialog() {
+            this.activeAddSectionIndex = -1;
+            this.activeAddData = [];
+            setTimeout(() => {
+                window.scrollTo(0, this.scrollPosition);
+            }, 0);
         },
         // Table Button Actions
         moveUpData(sectionIndex: number, index: number) {

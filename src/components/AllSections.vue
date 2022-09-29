@@ -20,7 +20,7 @@ const allSections: any = {
 
 const store = useMainStore();
 const { sections } = storeToRefs(store);
-const { toggleHideSection, openAddSectionDialog, openEditSectionDialog } = store;
+const { toggleHideSection, openAddDialog, openEditSectionDialog } = store;
 </script>
 
 <template>
@@ -28,11 +28,7 @@ const { toggleHideSection, openAddSectionDialog, openEditSectionDialog } = store
         <div class="flex flex-row border-b-2 pb-1">
             <h4 class="text-xl font-bold"><font-awesome-icon :icon="section.icon" /> {{ section.header }}</h4>
             <div class="ml-auto flex flex-row gap-3">
-                <button
-                    v-if="section.buttons.includes('add')"
-                    class="rounded border border-green-500 p-1 hover:bg-green-500 hover:text-white transition duration-500"
-                    @click="openAddSectionDialog(index)"
-                >
+                <button v-if="section.buttons.includes('add')" class="rounded border border-green-500 p-1 hover:bg-green-500 hover:text-white transition duration-500" @click="openAddDialog(index)">
                     Add
                 </button>
                 <button
