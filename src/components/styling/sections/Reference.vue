@@ -2,7 +2,8 @@
 import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
 
+const props = defineProps(["sectionIndex"]);
 const store = useMainStore();
-const { sections } = storeToRefs(store);
+const { sections } = store;
 </script>
 <template>BB</template>

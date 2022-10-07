@@ -6,4 +6,11 @@ const props = defineProps(["sectionIndex"]);
 const store = useMainStore();
 const { sections } = storeToRefs(store);
 </script>
-<template>FF</template>
+<template>
+    <div>
+        <div class="flex flex-row items-center gap-1">
+            <span class="whitespace-nowrap font-bold text-xl">{{ sections[sectionIndex].header }}</span>
+            <hr class="w-full border rounded-lg" />
+        </div>
+    </div>
+</template>

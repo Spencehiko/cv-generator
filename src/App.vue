@@ -7,7 +7,7 @@ import AllSections from "@/components/AllSections.vue";
 import EditSection from "@/components/edit/dialogs/EditSection.vue";
 import EditData from "@/components/edit/dialogs/EditData.vue";
 import AddData from "@/components/edit/dialogs/AddData.vue";
-import StylingPage from "./components/StylingPage.vue";
+import PreviewPage from "./components/PreviewPage.vue";
 
 const store = useMainStore();
 const { activeHeader, sections, activeSectionIndex, activeDataIndex, activeAddSectionIndex, activeDeleteSectionIndex } = storeToRefs(store);
@@ -31,7 +31,7 @@ onMounted(() => {
         </header>
         <body class="pb-4">
             <AllSections v-if="activeHeader === 'edit'" />
-            <StylingPage v-else-if="activeHeader === 'styling'" />
+            <PreviewPage v-else-if="activeHeader === 'preview'" />
         </body>
     </div>
     <EditSection v-if="activeSectionIndex !== -1" />

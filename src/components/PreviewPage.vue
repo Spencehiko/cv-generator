@@ -25,7 +25,7 @@ const { sections } = storeToRefs(store);
 </script>
 
 <template>
-    <div v-for="(section, index) in sections" :key="index" :class="{ 'px-10 py-4 m-10': section.stylingComponent !== 'Contact' }">
-        <component :is="(allSections[section.stylingComponent as any])" class="my-5 transition-all duration-500" :sectionIndex="index" :class="[section.isHidden ? ' blur-sm' : '']"></component>
+    <div v-for="(section, index) in sections" :key="index" :class="{ 'px-10 py-4 mx-10 mt-2': section.stylingComponent !== 'Contact' && !section.isHidden }">
+        <component v-if="!section.isHidden" :is="(allSections[section.stylingComponent as any])" class="my-5 transition-all duration-500" :sectionIndex="index"></component>
     </div>
 </template>

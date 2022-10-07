@@ -1,10 +1,10 @@
 export const pages = [
     {
         name: "Edit",
-        class: "edit" as "edit" | "styling",
+        class: "edit" as "edit" | "preview",
     },
     {
-        name: "Styling",
-        class: "styling" as "edit" | "styling",
+        name: "Preview",
+        class: "preview" as "edit" | "preview",
     },
 ];

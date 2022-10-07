@@ -32,18 +32,19 @@ import {
     faPhone,
     faLocationPin,
 } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter, faLinkedin, faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
-    // header buttons
+    // header buttons,
     faFileExport,
     faRotateLeft,
-    // buttons
+    // buttons,
     faPen,
     faTrash,
     faCaretUp,
     faCaretDown,
     faX,
-    // section titles
+    // section titles,
     faHouse,
     faEnvelope,
     faIdCard,
@@ -52,8 +53,14 @@ library.add(
     faLanguage,
     faFolder,
     faUserTie,
-    // contact icons
-    faGlobe
+    // contact icons,
+    faGlobe,
+    faPhone,
+    faLocationPin,
+    faTwitter,
+    faLinkedin,
+    faGithub,
+    faYoutube
 );
 /*  Date Picker    */
 import Datepicker from "@vuepic/vue-datepicker";

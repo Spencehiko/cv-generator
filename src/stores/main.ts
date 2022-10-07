@@ -88,11 +88,23 @@ export const defaultSections = [
                 inputLabel: "School Departmant",
                 required: true,
             },
+            schoolGpa: {
+                type: "input",
+                inputType: "text",
+                inputLabel: "GPA",
+                required: true,
+            },
+            startDate: {
+                type: "date",
+                inputType: "",
+                inputLabel: "Start Date",
+                required: true,
+            },
             graduationDate: {
                 type: "date",
                 inputType: "",
                 inputLabel: "Graduation Date",
-                required: false,
+                required: true,
             },
         },
         data: {
@@ -104,6 +116,8 @@ export const defaultSections = [
             schoolStatus: true,
             schoolName: "Some University",
             schoolDepartmant: "Some Department",
+            schoolGpa: "3.00",
+            startDate: { month: 5, year: 2016 },
             graduationDate: { month: 0, year: 2021 },
         },
         isHidden: false,
@@ -512,7 +526,7 @@ export const defaultSections = [
 export const useMainStore = defineStore({
     id: "store",
     state: () => ({
-        activeHeader: "edit" as "edit" | "styling",
+        activeHeader: "edit" as "edit" | "preview",
         sections: [] as Array<Section>,
         scrollPosition: 0 as number,
         // edit section
