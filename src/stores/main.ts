@@ -72,7 +72,7 @@ export const defaultSections = [
                 type: "input",
                 inputType: "checkbox",
                 inputLabel: "Are you graduated?",
-                required: true,
+                required: false,
             },
             schoolName: {
                 type: "input",
@@ -267,7 +267,7 @@ export const defaultSections = [
                 type: "input",
                 inputType: "checkbox",
                 inputLabel: "Are you still working here?",
-                required: true,
+                required: false,
             },
         },
         data: [
@@ -503,7 +503,7 @@ export const defaultSections = [
 export const useMainStore = defineStore({
     id: "store",
     state: () => ({
-        activeHeader: "edit" as "edit" | "preview",
+        activeHeader: "edit" as "edit" | "styling",
         sections: [] as Array<Section>,
         scrollPosition: 0 as number,
         // edit section
@@ -529,6 +529,12 @@ export const useMainStore = defineStore({
         exportCV() {
             console.log("Will be developed soon!");
         },
+        // Scroll
+        scrollToPosition() {
+            setTimeout(() => {
+                window.scrollTo(0, this.scrollPosition);
+            }, 0);
+        },
         // Edit Section
         openEditSectionDialog(index: number) {
             this.scrollPosition = window.scrollY;
@@ -539,13 +545,12 @@ export const useMainStore = defineStore({
             this.sections[this.activeSectionIndex].data = this.activeSectionData;
             this.activeSectionData = [];
             this.activeSectionIndex = -1;
+            this.scrollToPosition();
         },
         closeEditSectionDialog() {
             this.activeSectionData = [];
             this.activeSectionIndex = -1;
-            setTimeout(() => {
-                window.scrollTo(0, this.scrollPosition);
-            }, 0);
+            this.scrollToPosition();
         },
         toggleHideSection(index: number) {
             this.sections[index].isHidden = !this.sections[index].isHidden;
@@ -562,14 +567,13 @@ export const useMainStore = defineStore({
             this.activeDataSectionIndex = -1;
             this.activeDataIndex = -1;
             this.activeData = [];
+            this.scrollToPosition();
         },
         closeEditDataDialog() {
             this.activeDataSectionIndex = -1;
             this.activeDataIndex = -1;
             this.activeData = [];
-            setTimeout(() => {
-                window.scrollTo(0, this.scrollPosition);
-            }, 0);
+            this.scrollToPosition();
         },
         // Delete Data
         deleteData(sectionIndex: number, index: number) {
@@ -582,15 +586,12 @@ export const useMainStore = defineStore({
         },
         addData() {
             this.sections[this.activeAddSectionIndex].data.push(Object.assign({}, this.activeAddData));
-            console.log(this.sections[this.activeAddSectionIndex]);
             this.closeAddDialog();
         },
         closeAddDialog() {
             this.activeAddSectionIndex = -1;
             this.activeAddData = [];
-            setTimeout(() => {
-                window.scrollTo(0, this.scrollPosition);
-            }, 0);
+            this.scrollToPosition();
         },
         // Table Button Actions
         moveUpData(sectionIndex: number, index: number) {

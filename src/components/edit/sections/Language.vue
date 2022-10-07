@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useMainStore, experienceOptions } from "@/stores/main";
+import { useMainStore } from "../../../stores/main";
 import { storeToRefs } from "pinia";
-import SortButton from "@/components/table/SortButton.vue";
-import EditButton from "@/components/table/EditButton.vue";
-import DeleteButton from "@/components/table/DeleteButton.vue";
+import SortButton from "../../edit/table/SortButton.vue";
+import EditButton from "../../edit/table/EditButton.vue";
+import DeleteButton from "../../edit/table/DeleteButton.vue";
 
 const props = defineProps(["sectionIndex"]);
 const store = useMainStore();
@@ -14,10 +14,8 @@ const { sections } = storeToRefs(store);
         <thead>
             <tr>
                 <th class="border p-3 text-center w-20">Sort</th>
-                <th class="border p-3">Skill Name</th>
+                <th class="border p-3">Language Name</th>
                 <th class="border p-3 text-center">Proficiency</th>
-                <th class="border p-3 text-center">Experience</th>
-                <th class="border p-3">Summary</th>
                 <th class="border p-3 text-center w-20">Edit</th>
                 <th class="border p-3 text-center w-20">Delete</th>
             </tr>
@@ -26,9 +24,7 @@ const { sections } = storeToRefs(store);
             <tr v-for="(data, index) in sections[sectionIndex].data" :key="index">
                 <SortButton class="border p-2 text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <td class="border p-3">{{ data.name }}</td>
-                <td class="border text-center p-3">{{ data.skill + " / 10" }}</td>
-                <td class="border text-center p-3">{{ experienceOptions[data.experience] }}</td>
-                <td class="border p-3">{{ data.summary }}</td>
+                <td class="border text-center p-3">{{ data.value + " / 10" }}</td>
                 <EditButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <DeleteButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />
             </tr>

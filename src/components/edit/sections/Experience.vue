@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useMainStore, workStyleOptions } from "@/stores/main";
+import { useMainStore, workStyleOptions } from "../../../stores/main";
 import { storeToRefs } from "pinia";
-import EditButton from "@/components/table/EditButton.vue";
-import DeleteButton from "@/components/table/DeleteButton.vue";
+import EditButton from "../../edit/table/EditButton.vue";
+import DeleteButton from "../../edit/table/DeleteButton.vue";
 
 const props = defineProps(["sectionIndex"]);
 const store = useMainStore();
