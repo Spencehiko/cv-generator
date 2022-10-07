@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMainStore } from "../../../stores/main";
+import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
 
 const props = defineProps(["sectionIndex", "index"]);

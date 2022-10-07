@@ -11,6 +11,7 @@ interface Section {
     icon: String;
     name: String;
     component: String;
+    stylingComponent: String;
     buttons: Array<string>;
     inputs: any;
     data: Array<any>;
@@ -36,6 +37,7 @@ export const defaultSections = [
         icon: "fa-solid fa-home",
         name: "General",
         component: "Generic",
+        stylingComponent: "General",
         buttons: ["edit"],
         inputs: {
             firstName: {
@@ -111,6 +113,7 @@ export const defaultSections = [
         icon: "fa-solid fa-envelope",
         name: "Contact",
         component: "Generic",
+        stylingComponent: "Contact",
         buttons: ["edit"],
         inputs: {
             email: {
@@ -172,6 +175,7 @@ export const defaultSections = [
         icon: "fa-solid fa-id-card",
         name: "Personal",
         component: "Generic",
+        stylingComponent: "Personal",
         buttons: ["edit"],
         inputs: {
             birthOfDate: {
@@ -205,13 +209,14 @@ export const defaultSections = [
             pronoun: "",
             hobbies: "",
         },
-        isHidden: false,
+        isHidden: true,
     },
     {
         header: "Work Experience",
         icon: "fa-solid fa-briefcase",
         name: "Experience",
         component: "Experience",
+        stylingComponent: "Experience",
         buttons: ["add"],
         inputs: {
             companyName: {
@@ -312,6 +317,7 @@ export const defaultSections = [
         icon: "fa-solid fa-star",
         name: "Skill",
         component: "Skill",
+        stylingComponent: "Skill",
         buttons: ["add"],
         inputs: {
             name: {
@@ -379,6 +385,7 @@ export const defaultSections = [
         icon: "fa-solid fa-language",
         name: "Language",
         component: "Language",
+        stylingComponent: "Language",
         buttons: ["add"],
         inputs: {
             name: {
@@ -415,6 +422,7 @@ export const defaultSections = [
         icon: "fa-solid fa-folder",
         name: "Project",
         component: "Project",
+        stylingComponent: "Project",
         buttons: ["add"],
         inputs: {
             name: {
@@ -447,6 +455,7 @@ export const defaultSections = [
         icon: "fa-solid fa-user-tie",
         name: "Reference",
         component: "Reference",
+        stylingComponent: "Reference",
         buttons: ["add"],
         inputs: {
             name: {

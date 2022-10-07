@@ -27,6 +27,10 @@ import {
     faLanguage,
     faFolder,
     faUserTie,
+    // contact icons
+    faGlobe,
+    faPhone,
+    faLocationPin,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -47,7 +51,9 @@ library.add(
     faStar,
     faLanguage,
     faFolder,
-    faUserTie
+    faUserTie,
+    // contact icons
+    faGlobe
 );
 /*  Date Picker    */
 import Datepicker from "@vuepic/vue-datepicker";
