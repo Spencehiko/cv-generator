@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { useMainStore } from "@/stores/main";
 import { storeToRefs } from "pinia";
-
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 
 const store = useMainStore();
 const { sections, activeSectionIndex, activeSectionData } = storeToRefs(store);

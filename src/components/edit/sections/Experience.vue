@@ -3,6 +3,7 @@ import { useMainStore, workStyleOptions } from "@/stores/main";
 import { storeToRefs } from "pinia";
 import EditButton from "@/components/edit/table/EditButton.vue";
 import DeleteButton from "@/components/edit/table/DeleteButton.vue";
+import SortButton from "@/components/edit/table/SortButton.vue";
 
 const props = defineProps(["sectionIndex"]);
 const store = useMainStore();
@@ -11,6 +12,7 @@ const { sections } = storeToRefs(store);
 <template>
     <table class="w-full">
         <tr v-for="(data, index) in sections[sectionIndex].data" :key="index">
+            <SortButton class="border p-2 text-center w-20" :sectionIndex="sectionIndex" :index="index" />
             <td class="w-2/5 inline-flex flex-col text-right">
                 <span>{{ data.title }}</span>
                 <span>{{
