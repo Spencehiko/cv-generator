@@ -23,7 +23,11 @@ const { exportCV } = store;
             </button>
         </div>
         <div class="ml-auto flex flex-row gap-5 mr-5">
-            <button class="group border rounded border-yellow-300 text-yellow-300 h-fit my-auto p-2 transition-all duration-500 hover:text-slate-900 hover:bg-yellow-300" @click="exportCV()">
+            <button
+                v-if="activeHeader === 'preview'"
+                class="group border rounded border-yellow-300 text-yellow-300 h-fit my-auto p-2 transition-all duration-500 hover:text-slate-900 hover:bg-yellow-300"
+                @click="exportCV()"
+            >
                 <font-awesome-icon icon="fa-solid fa-file-export" class="w-12 h-4 py-1 hidden group-hover:block" />
                 <span class="w-12 block group-hover:hidden" @click="exportCV()">Export</span>
             </button>

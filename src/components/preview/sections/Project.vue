@@ -4,6 +4,8 @@ import { storeToRefs } from "pinia";
 
 const props = defineProps(["sectionIndex"]);
 const store = useMainStore();
-const { sections } = store;
+const { sections } = storeToRefs(store);
 </script>
-<template>BB</template>
+<template>
+    <div>Project</div>
+</template>

@@ -24,7 +24,7 @@ const { sections } = storeToRefs(store);
             <tr v-for="(data, index) in sections[sectionIndex].data" :key="index">
                 <SortButton class="border p-2 text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <td class="border p-3">{{ data.name }}</td>
-                <td class="border text-center p-3">{{ data.value + " / 10" }}</td>
+                <td class="border text-center p-3">{{ data.skill + " / 10" }}</td>
                 <EditButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />
                 <DeleteButton class="border text-center w-20" :sectionIndex="sectionIndex" :index="index" />
             </tr>

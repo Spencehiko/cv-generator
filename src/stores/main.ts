@@ -11,7 +11,7 @@ interface Section {
     icon: String;
     name: String;
     component: String;
-    stylingComponent: String;
+    previewComponent: String;
     buttons: Array<string>;
     inputs: any;
     data: Array<any>;
@@ -37,7 +37,7 @@ export const defaultSections = [
         icon: "fa-solid fa-home",
         name: "General",
         component: "Generic",
-        stylingComponent: "General",
+        previewComponent: "General",
         buttons: ["edit"],
         inputs: {
             firstName: {
@@ -108,15 +108,15 @@ export const defaultSections = [
             },
         },
         data: {
-            firstName: "John",
-            lastName: "Doe",
+            firstName: "Hikmet Can",
+            lastName: "Kufteoglu",
             title: "Frontend Developer",
-            summary: "A passionate Frontend Developer that is keen to learn new technologies. Worked over 5 years in different scale of companies and developed big scaled projects.",
+            summary: "A passionate Frontend Developer that is keen to learn new technologies. Worked over 3 years in different scale of companies and developed big scaled projects.",
             portfolio: "https://hicaku.com",
             schoolStatus: true,
-            schoolName: "Some University",
-            schoolDepartmant: "Some Department",
-            schoolGpa: "3.00",
+            schoolName: "Istanbul Technical University",
+            schoolDepartmant: "Mathematics Engineering",
+            schoolGpa: "2.97",
             startDate: { month: 5, year: 2016 },
             graduationDate: { month: 0, year: 2021 },
         },
@@ -127,7 +127,7 @@ export const defaultSections = [
         icon: "fa-solid fa-envelope",
         name: "Contact",
         component: "Generic",
-        stylingComponent: "Contact",
+        previewComponent: null,
         buttons: ["edit"],
         inputs: {
             email: {
@@ -140,13 +140,13 @@ export const defaultSections = [
                 type: "input",
                 inputType: "text",
                 inputLabel: "Phone Number",
-                required: true,
+                required: false,
             },
             address: {
                 type: "input",
                 inputType: "text",
                 inputLabel: "Address",
-                required: true,
+                required: false,
             },
             github: {
                 type: "input",
@@ -174,11 +174,11 @@ export const defaultSections = [
             },
         },
         data: {
-            email: "johndoe@mail.com",
-            phone: "+12 345 67 89",
-            address: "Istanbul / Turkey",
-            github: "",
-            linkedin: "",
+            email: "hikmet.kufteoglu(at)gmail.com",
+            phone: "",
+            address: "",
+            github: "github.com/Spencehiko",
+            linkedin: "linkedin.com/in/hicaku/",
             youtube: "",
             twitter: "",
         },
@@ -189,7 +189,7 @@ export const defaultSections = [
         icon: "fa-solid fa-id-card",
         name: "Personal",
         component: "Generic",
-        stylingComponent: "Personal",
+        previewComponent: "Personal",
         buttons: ["edit"],
         inputs: {
             birthOfDate: {
@@ -230,7 +230,7 @@ export const defaultSections = [
         icon: "fa-solid fa-briefcase",
         name: "Experience",
         component: "Experience",
-        stylingComponent: "Experience",
+        previewComponent: "Experience",
         buttons: ["add"],
         inputs: {
             companyName: {
@@ -280,7 +280,7 @@ export const defaultSections = [
                 type: "textarea",
                 inputType: "",
                 inputLabel: "Summary",
-                required: false,
+                required: true,
             },
             isStillWorkingHere: {
                 type: "input",
@@ -291,36 +291,38 @@ export const defaultSections = [
         },
         data: [
             {
-                companyName: "3rd Company",
+                companyName: "Huawei",
                 title: "Frontend Developer",
-                startDate: { month: 0, year: 2022 },
+                startDate: { month: 0, year: 2021 },
                 endDate: null,
-                companyLocation: "Istanbul / Turkey",
-                companyWebsite: "thirdcompany.abcd",
+                companyLocation: "Remote/Turkey",
+                companyWebsite: "https://huawei.com/",
                 workStyle: "fulltime",
-                summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla justo sed tempor malesuada. Nam ex est, ornare nec massa.",
+                summary:
+                    "Currently I am working in Huawei as a frontend Developer. We developed several tools for Petal Maps. Although we had a small team of developers, we managed to overcome tough obstacles on our way.I won a Future Star Award at the end of 2021.",
                 isStillWorkingHere: true,
             },
             {
-                companyName: "2nd Company",
-                title: "Frontend Developer",
-                startDate: { month: 5, year: 2021 },
-                endDate: { month: 11, year: 2021 },
-                companyLocation: "Istanbul / Turkey",
-                companyWebsite: "secondcompany.abcd",
-                workStyle: "fulltime",
-                summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla justo sed tempor malesuada. Nam ex est, ornare nec massa.",
+                companyName: "Firmasoft",
+                title: "Junior Full Stack Developer",
+                startDate: { month: 11, year: 2018 },
+                endDate: { month: 4, year: 2021 },
+                companyLocation: "",
+                companyWebsite: "http://firmasoft.com/",
+                workStyle: "parttime",
+                summary:
+                    "In Firmasoft, the aim was to build CMSs,websites and mobile apps for our clients. I developed many websites and CMSs with our small team. I worked full-time on holidays and part-time on the rest.",
                 isStillWorkingHere: false,
             },
             {
-                companyName: "1st Company",
+                companyName: "Datapare",
                 title: "Junior Frontend Developer",
-                startDate: { month: 0, year: 2021 },
-                endDate: { month: 4, year: 2021 },
-                companyLocation: "",
-                companyWebsite: "firstcompany.abcd",
-                workStyle: "fulltime",
-                summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis magna urna, quis maximus risus vestibulum in. Aliquam erat volutpat.",
+                startDate: { month: 5, year: 2018 },
+                endDate: { month: 10, year: 2018 },
+                companyLocation: "Istanbul/Turkey",
+                companyWebsite: "",
+                workStyle: "parttime",
+                summary: "I learnt basics of web development and working in a fast paced, agile team. It was a startup and I worked fulltime on holidays and part-time on the rest.",
                 isStillWorkingHere: false,
             },
         ],
@@ -331,7 +333,7 @@ export const defaultSections = [
         icon: "fa-solid fa-star",
         name: "Skill",
         component: "Skill",
-        stylingComponent: "Skill",
+        previewComponent: "Skill",
         buttons: ["add"],
         inputs: {
             name: {
@@ -365,31 +367,52 @@ export const defaultSections = [
                 name: "Vue.js",
                 skill: 7,
                 experience: 2,
-                summary: "Used Vue.js in many projects.",
+                summary:
+                    "I have been working with Vue.js for my current company and also I am developing personal apps to improve myself. At work we use Vue 2 with Vuex and in my personal projects I use Vue 3 (Composition API) with Pinia.",
             },
             {
                 name: "TypeScript",
                 skill: 6,
                 experience: 2,
-                summary: "Used TypeScript in many projects.",
+                summary: "I have been working with TypeScript implemented in Vue.js and I have built global scale projects with it in my previous job experiences.",
             },
             {
                 name: "JavaScript",
                 skill: 8,
                 experience: 3,
-                summary: "Used JavaScript in many projects.",
+                summary: "I have been working on this subject for over 4 years and I have built global scale projects with it in my previous job experiences.",
             },
             {
                 name: "Tailwind CSS",
                 skill: 6,
                 experience: 1,
-                summary: "Used Tailwind CSS in many projects.",
+                summary: "I am using Tailwind CSS in my personal projects and I have built several apps with it.",
             },
             {
-                name: "HTML",
+                name: "HTML/CSS",
                 skill: 9,
                 experience: 3,
-                summary: "Used HTML in many projects.",
+                summary:
+                    "For many years, I have worked with HTML and CSS. I have a really good understanding of the correlation between them and I can code a design for the web page easily. I know LESS as well.",
+            },
+            {
+                name: "GitHub",
+                skill: 6,
+                experience: 2,
+                summary: "I have the knowledge of Git commands. I have been using Sourcetree to visualize these actions, but I can use them on command line as well.",
+            },
+            {
+                name: "PHP & MySQL",
+                skill: 7,
+                experience: 2,
+                summary:
+                    "I have worked with PHP and MySQL for over 2 years and I have built several CMSs with it. I am familiar with OOP and API structures of PHP. Also I have the knowledge of queries and data management in MySQL ",
+            },
+            {
+                name: "Web Testing Tools",
+                skill: 4,
+                experience: 1,
+                summary: "I used Jest for unit testing and Cypress for end-to-end testing. I have the basic knowledge of them.",
             },
         ],
         isHidden: false,
@@ -399,7 +422,7 @@ export const defaultSections = [
         icon: "fa-solid fa-language",
         name: "Language",
         component: "Language",
-        stylingComponent: "Language",
+        previewComponent: "Language",
         buttons: ["add"],
         inputs: {
             name: {
@@ -408,7 +431,7 @@ export const defaultSections = [
                 inputLabel: "Language",
                 required: true,
             },
-            value: {
+            skill: {
                 type: "range",
                 inputType: "",
                 inputLabel: "Language Proficiency (out of 10)",
@@ -418,15 +441,15 @@ export const defaultSections = [
         data: [
             {
                 name: "Turkish",
-                value: 10,
+                skill: 10,
             },
             {
                 name: "English",
-                value: 9,
+                skill: 9,
             },
             {
                 name: "Chinese",
-                value: 3,
+                skill: 3,
             },
         ],
         isHidden: false,
@@ -436,7 +459,7 @@ export const defaultSections = [
         icon: "fa-solid fa-folder",
         name: "Project",
         component: "Project",
-        stylingComponent: "Project",
+        previewComponent: "Project",
         buttons: ["add"],
         inputs: {
             name: {
@@ -462,14 +485,14 @@ export const defaultSections = [
                 link: "https://secondproject.com/",
             },
         ],
-        isHidden: false,
+        isHidden: true,
     },
     {
         header: "References",
         icon: "fa-solid fa-user-tie",
         name: "Reference",
         component: "Reference",
-        stylingComponent: "Reference",
+        previewComponent: "Reference",
         buttons: ["add"],
         inputs: {
             name: {
@@ -494,7 +517,7 @@ export const defaultSections = [
                 type: "input",
                 inputType: "text",
                 inputLabel: "E-Mail",
-                required: false,
+                required: true,
             },
             phone: {
                 type: "input",
@@ -505,18 +528,25 @@ export const defaultSections = [
         },
         data: [
             {
-                name: "Jane Doe",
-                companyName: "1st Company",
-                title: "CEO and Founder",
-                email: "janedoe@mail.com",
+                name: "Salih Kesepara",
+                companyName: "Huawei",
+                title: "Frontend Team Lead",
+                email: "salih.kesepara(at)huawei.com",
                 phone: "",
             },
             {
-                name: "Allen Iverson",
-                companyName: "2nd Company",
-                title: "Team Lead",
-                email: "alleniverson@mail.com",
-                phone: "+21 543 76 98",
+                name: "Mustafa Tunç",
+                companyName: "Firmasoft",
+                title: "CEO and Founder",
+                email: "mustafatunc(at)firmasoft.com",
+                phone: "",
+            },
+            {
+                name: "Serkan Uz",
+                companyName: "Datapare",
+                title: "CEO and Founder",
+                email: "serkanuz(at)datapare.com",
+                phone: "",
             },
         ],
         isHidden: false,
@@ -550,7 +580,7 @@ export const useMainStore = defineStore({
         },
         // Header Button Actions
         exportCV() {
-            console.log("Will be developed soon!");
+            window.print();
         },
         // Scroll
         scrollToPosition() {

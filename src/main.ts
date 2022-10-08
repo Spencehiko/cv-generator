@@ -23,7 +23,7 @@ import {
     faEnvelope,
     faIdCard,
     faBriefcase,
-    faStar,
+    faStar as fasFaStar,
     faLanguage,
     faFolder,
     faUserTie,
@@ -33,6 +33,7 @@ import {
     faLocationPin,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faLinkedin, faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
     // header buttons,
@@ -49,7 +50,8 @@ library.add(
     faEnvelope,
     faIdCard,
     faBriefcase,
-    faStar,
+    fasFaStar,
+    farFaStar,
     faLanguage,
     faFolder,
     faUserTie,

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useMainStore } from "@/stores/main";
-import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 
-import General from "@/components/styling/sections/General.vue";
-import Personal from "@/components/styling/sections/Personal.vue";
-import Experience from "@/components/styling/sections/Experience.vue";
-import Skill from "@/components/styling/sections/Skill.vue";
-import Language from "@/components/styling/sections/Language.vue";
-import Reference from "@/components/styling/sections/Reference.vue";
-import Project from "@/components/styling/sections/Project.vue";
+import General from "@/components/preview/sections/General.vue";
+import Personal from "@/components/preview/sections/Personal.vue";
+import Experience from "@/components/preview/sections/Experience.vue";
+import Skill from "@/components/preview/sections/Skill.vue";
+import Language from "@/components/preview/sections/Language.vue";
+import Reference from "@/components/preview/sections/Reference.vue";
+import Project from "@/components/preview/sections/Project.vue";
 
 const allSections: any = {
     General,
@@ -21,11 +21,28 @@ const allSections: any = {
 };
 
 const store = useMainStore();
-const { sections } = storeToRefs(store);
+const { sections } = store;
 </script>
 
 <template>
-    <div v-for="(section, index) in sections" :key="index" :class="{ 'px-10 py-4 mx-10 mt-2': section.stylingComponent !== 'Contact' && !section.isHidden }">
-        <component v-if="!section.isHidden" :is="(allSections[section.stylingComponent as any])" class="my-5 transition-all duration-500" :sectionIndex="index"></component>
+    <div>
+        <div
+            v-for="(section, index) in sections"
+            :key="index"
+            :class="[section.name !== 'Experience' ? 'mt-5 print:mt-1.5' : '', section.name !== 'General' ? 'mb-5 print:mb-1.5' : ' mb-3 print:mb-0']"
+        >
+            <component
+                v-if="!section.isHidden && section.previewComponent"
+                :is="(allSections[section.previewComponent as any])"
+                :class="[section.name !== 'Experience' ? 'mt-3 print:mt-1.5' : '', section.name !== 'General' ? 'mb-3 print:mb-1.5' : ' mb-1.5']"
+                :sectionIndex="index"
+            ></component>
+        </div>
+        <span class="hidden text-xs w-full text-center italic mt-16 print:block">This CV is created with <a href="https://cv.hicaku.com/" class="text-blue-500">cv.hicaku.com</a></span>
     </div>
 </template>
+<style lang="css">
+.page-break-inside-avoid {
+    page-break-inside: avoid;
+}
+</style>

@@ -7,7 +7,7 @@ import AllSections from "@/components/AllSections.vue";
 import EditSection from "@/components/edit/dialogs/EditSection.vue";
 import EditData from "@/components/edit/dialogs/EditData.vue";
 import AddData from "@/components/edit/dialogs/AddData.vue";
-import PreviewPage from "./components/PreviewPage.vue";
+import PreviewPage from "@/components/PreviewPage.vue";
 
 const store = useMainStore();
 const { activeHeader, sections, activeSectionIndex, activeDataIndex, activeAddSectionIndex, activeDeleteSectionIndex } = storeToRefs(store);
@@ -26,15 +26,22 @@ onMounted(() => {
                 : '',
         ]"
     >
-        <header>
+        <header class="sticky top-0 z-50 print:hidden">
             <HeaderMenu />
         </header>
-        <body class="pb-4">
+        <body class="relative pb-4">
             <AllSections v-if="activeHeader === 'edit'" />
-            <PreviewPage v-else-if="activeHeader === 'preview'" />
+            <PreviewPage v-else-if="activeHeader === 'preview'" class="mx-100 my-5 px-20 border border-black print:px-10 print:border-none print:m-0" />
         </body>
     </div>
     <EditSection v-if="activeSectionIndex !== -1" />
     <EditData v-if="activeDataIndex !== -1" />
     <AddData v-if="activeAddSectionIndex !== -1" />
 </template>
+<style lang="css">
+@media print {
+    @page {
+        margin: 0.5cm;
+    }
+}
+</style>
