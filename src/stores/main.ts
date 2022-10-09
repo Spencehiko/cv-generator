@@ -192,10 +192,10 @@ export const defaultSections = [
         previewComponent: "Personal",
         buttons: ["edit"],
         inputs: {
-            birthOfDate: {
+            dateOfBirth: {
                 type: "date",
                 inputType: "",
-                inputLabel: "Birth of Date",
+                inputLabel: "Date of Birth",
                 required: false,
             },
             gender: {
@@ -218,7 +218,7 @@ export const defaultSections = [
             },
         },
         data: {
-            birthOfDate: null,
+            dateOfBirth: null,
             gender: "",
             pronoun: "",
             hobbies: "",

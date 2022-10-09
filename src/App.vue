@@ -32,7 +32,10 @@ onMounted(() => {
         </header>
         <body class="relative pb-4">
             <AllSections v-if="activeHeader === 'edit'" />
-            <PreviewPage v-else-if="activeHeader === 'preview'" class="mx-10 my-5 px-2 border-black sm:px-20 sm:mx-100 sm:border print:px-10 print:border-none print:m-0" />
+            <PreviewPage
+                v-else-if="activeHeader === 'preview'"
+                class="mx-10 my-5 px-2 border-black sm:px-5 sm:mx-5-percent sm:border md:mx-10-percent lg:mx-20-percent lg:px-20 print:px-10 print:border-none print:m-0 break-words"
+            />
         </body>
     </div>
     <EditSection v-if="activeSectionIndex !== -1" />
