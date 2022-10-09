@@ -24,22 +24,26 @@ const { toggleHideSection, openAddDialog, openEditSectionDialog } = store;
 </script>
 
 <template>
-    <div v-for="(section, index) in sections" :key="index" class="px-10 py-4 m-10 border border-black rounded-lg">
-        <div class="flex flex-row border-b-2 pb-1">
-            <h4 class="text-xl font-bold"><font-awesome-icon :icon="section.icon" /> {{ section.header }}</h4>
-            <div class="ml-auto flex flex-row gap-3">
-                <button v-if="section.buttons.includes('add')" class="rounded border border-green-500 p-1 hover:bg-green-500 hover:text-white transition duration-500" @click="openAddDialog(index)">
-                    Add Data
+    <div v-for="(section, index) in sections" :key="index" class="px-5 py-4 m-10 border border-black rounded-lg sm:px-10">
+        <div class="flex flex-col gap-5 sm:flex-row sm:gap-0 border-b-2 pb-1">
+            <h4 class="text-xl text-center font-bold sm:text-left"><font-awesome-icon :icon="section.icon" /> {{ section.header }}</h4>
+            <div class="flex flex-row justify-center gap-3 sm:ml-auto">
+                <button
+                    v-if="section.buttons.includes('add')"
+                    class="ml-1 rounded border border-green-500 p-1 hover:bg-green-500 hover:text-white transition duration-500"
+                    @click="openAddDialog(index)"
+                >
+                    Add
                 </button>
                 <button
                     v-if="section.buttons.includes('edit')"
-                    class="rounded border border-yellow-500 p-1 hover:bg-yellow-500 hover:text-white transition duration-500"
+                    class="ml-1 rounded border border-yellow-500 p-1 hover:bg-yellow-500 hover:text-white transition duration-500"
                     @click="openEditSectionDialog(index)"
                 >
-                    Edit Data
+                    Edit
                 </button>
                 <button
-                    class="rounded border hover:text-white transition duration-500"
+                    class="ml-1 rounded border hover:text-white transition duration-500"
                     :class="[section.isHidden ? ' border-green-500 p-1 hover:bg-green-500' : ' border-red-500 p-1 hover:bg-red-500']"
                     @click="toggleHideSection(index)"
                 >

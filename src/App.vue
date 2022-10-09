@@ -25,6 +25,7 @@ onMounted(() => {
                 ? ['blur', 'pointer-events-none', 'select-none', ' overflow-y-hidden', 'h-screen']
                 : '',
         ]"
+        class="overflow-x-hidden"
     >
         <header class="sticky top-0 z-50 print:hidden">
             <HeaderMenu />

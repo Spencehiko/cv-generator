@@ -10,19 +10,19 @@ const { exportCV } = store;
 
 <template>
     <div class="h-20 bg-slate-900 text-white flex flex-row justify-between items-center">
-        <span class="ml-5">CV Generator</span>
-        <div class="flex flex-row justify-center gap-5 ml-auto">
+        <span class="ml-1">CV Generator</span>
+        <div class="flex flex-row justify-center gap-1 ml-auto sm:gap-5">
             <button
                 v-for="page in pages"
                 :key="page.name"
-                class="border-b-2 h-fit my-auto p-2 transition-all duration-500 ml-5"
+                class="border-b-2 h-fit my-auto p-2 transition-all duration-500 mx-1 sm:mx-5"
                 :class="{ 'border-white': activeHeader === page.class, 'border-transparent': activeHeader !== page.class }"
                 @click="activeHeader = page.class"
             >
                 {{ page.name }}
             </button>
         </div>
-        <div class="ml-auto flex flex-row gap-5 mr-5">
+        <div class="ml-auto flex flex-row gap-1 mr-1 sm:gap-5 sm:mr-5">
             <button
                 v-if="activeHeader === 'preview'"
                 class="group border rounded border-yellow-300 text-yellow-300 h-fit my-auto p-2 transition-all duration-500 hover:text-slate-900 hover:bg-yellow-300"
