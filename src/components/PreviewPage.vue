@@ -30,6 +30,7 @@ const { sections } = store;
             v-for="(section, index) in sections"
             :key="index"
             :class="[section.name !== 'Experience' ? 'mt-5 print:mt-1.5' : '', section.name !== 'General' ? 'mb-5 print:mb-1.5' : ' mb-3 print:mb-0']"
+            class="hidden sm:block print:block"
         >
             <component
                 v-if="!section.isHidden && section.previewComponent"
@@ -38,6 +39,7 @@ const { sections } = store;
                 :sectionIndex="index"
             ></component>
         </div>
+        <div class="text-center w-full font-bold sm:hidden print:hidden">Cannot preview on small screens</div>
         <span class="hidden text-xs w-full text-center italic mt-16 print:block">This CV is created with <a href="https://cv.hicaku.com/" class="text-blue-500">cv.hicaku.com</a></span>
     </div>
 </template>
