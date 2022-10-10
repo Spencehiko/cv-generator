@@ -27,6 +27,7 @@ import {
     faLanguage,
     faFolder,
     faUserTie,
+    faCertificate,
     // contact icons
     faGlobe,
     faPhone,
@@ -55,6 +56,7 @@ library.add(
     faLanguage,
     faFolder,
     faUserTie,
+    faCertificate,
     // contact icons,
     faGlobe,
     faPhone,

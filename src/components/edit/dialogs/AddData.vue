@@ -27,7 +27,7 @@ const checkData = () => {
     <div class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border-2 w-1/2 overflow-auto max-h-screen-20">
         <!-- HEADER -->
         <div class="flex justify-between items-center border-b-2 p-2">
-            <span class="font-bold">Edit {{ sections[activeAddSectionIndex].header }}</span>
+            <span class="font-bold">Add {{ sections[activeAddSectionIndex].header }}</span>
             <button @click="closeAddDialog">
                 <font-awesome-icon
                     icon="fa-solid fa-x"

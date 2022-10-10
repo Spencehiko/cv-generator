@@ -488,6 +488,63 @@ export const defaultSections = [
         isHidden: true,
     },
     {
+        header: "Certificates",
+        icon: "fa-solid fa-certificate",
+        name: "Certificate",
+        component: "Certificate",
+        previewComponent: "Certificate",
+        buttons: ["add"],
+        inputs: {
+            givenBy: {
+                type: "input",
+                inputType: "text",
+                inputLabel: "Given By",
+                required: true,
+            },
+            name: {
+                type: "input",
+                inputType: "text",
+                inputLabel: "Certificate Name",
+                required: true,
+            },
+            date: {
+                type: "date",
+                inputType: "",
+                inputLabel: "Given Date",
+                required: true,
+            },
+            id: {
+                type: "input",
+                inputType: "text",
+                inputLabel: "Certificate ID",
+                required: false,
+            },
+            link: {
+                type: "input",
+                inputType: "text",
+                inputLabel: "Certificate Link",
+                required: false,
+            },
+        },
+        data: [
+            {
+                givenBy: "First Company",
+                name: "Great Certificate",
+                date: { month: 8, year: 2020 },
+                id: "",
+                link: "https://somelink.com/",
+            },
+            {
+                givenBy: "Second Company",
+                name: "Greater Certificate",
+                date: { month: 3, year: 2021 },
+                id: "",
+                link: "",
+            },
+        ],
+        isHidden: true,
+    },
+    {
         header: "References",
         icon: "fa-solid fa-user-tie",
         name: "Reference",

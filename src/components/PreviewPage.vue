@@ -8,6 +8,7 @@ import Experience from "@/components/preview/sections/Experience.vue";
 import Skill from "@/components/preview/sections/Skill.vue";
 import Language from "@/components/preview/sections/Language.vue";
 import Reference from "@/components/preview/sections/Reference.vue";
+import Certificate from "@/components/preview/sections/Certificate.vue";
 import Project from "@/components/preview/sections/Project.vue";
 
 const allSections: any = {
@@ -17,6 +18,7 @@ const allSections: any = {
     Skill,
     Language,
     Reference,
+    Certificate,
     Project,
 };
 
