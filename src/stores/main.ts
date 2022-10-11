@@ -111,7 +111,8 @@ export const defaultSections = [
             firstName: "Hikmet Can",
             lastName: "Kufteoglu",
             title: "Frontend Developer",
-            summary: "A passionate Frontend Developer that is keen to learn new technologies. Worked over 3 years in different scale of companies and developed big scaled projects.",
+            summary:
+                "A passionate Frontend Developer who is keen to learn new technologies. Worked over 3 years in different scale of companies and developed big scaled projects. Open to new ideas and willing to use my skills combined with well-thought projects. Looking forward to taking my current skills to upper levels and benefit both myself and the company I am working.",
             portfolio: "https://hicaku.com",
             schoolStatus: true,
             schoolName: "Istanbul Technical University",
@@ -299,7 +300,7 @@ export const defaultSections = [
                 companyWebsite: "https://huawei.com/",
                 workStyle: "fulltime",
                 summary:
-                    "Currently I am working in Huawei as a frontend Developer. We developed several tools for Petal Maps. Although we had a small team of developers, we managed to overcome tough obstacles on our way.I won a Future Star Award at the end of 2021.",
+                    "Currently I am working in Huawei as a frontend Developer. We developed several tools for Petal Maps. Although we had a small team of developers, we managed to overcome tough obstacles on our way. I won a Future Star Award at the end of 2021.",
                 isStillWorkingHere: true,
             },
             {
