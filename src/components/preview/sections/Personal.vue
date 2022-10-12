@@ -1,16 +1,7 @@
 <script setup lang="ts">
-import { useMainStore } from "@/stores/main";
 import Header from "@/components/preview/general/Header.vue";
 
-const props = defineProps(["sectionIndex"]);
-const store = useMainStore();
-const { sections } = store as any;
-
-Object.keys(sections[props.sectionIndex].data).filter(
-    (k) =>
-        (sections[props.sectionIndex].data[k] === null || sections[props.sectionIndex].data[k] === undefined || sections[props.sectionIndex].data[k] === "") &&
-        delete sections[props.sectionIndex].data[k]
-);
+const props = defineProps(["sections", "sectionIndex"]);
 </script>
 <template>
     <div class="mt-2">

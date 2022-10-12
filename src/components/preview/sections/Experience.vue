@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useMainStore, workStyleOptions } from "@/stores/main";
+import { workStyleOptions } from "@/stores/main";
 import Header from "@/components/preview/general/Header.vue";
 import Education from "@/components/preview/sections/Education.vue";
 
-const props = defineProps(["sectionIndex"]);
-const store = useMainStore();
-const { sections } = store;
+const props = defineProps(["sections", "sectionIndex"]);
 </script>
 <template>
     <div>
@@ -38,6 +36,6 @@ const { sections } = store;
                 </div>
             </div>
         </div>
-        <Education class="mt-6 print:mt-1" />
+        <Education class="mt-6 print:mt-1" :sections="sections" />
     </div>
 </template>

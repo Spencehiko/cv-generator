@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { useMainStore } from "@/stores/main";
-
 import Contact from "@/components/preview/sections/Contact.vue";
 
-const props = defineProps(["sectionIndex"]);
-const store = useMainStore();
-const { sections } = store as any;
+const props = defineProps(["sections", "sectionIndex"]);
 </script>
 <template>
     <div>
@@ -21,7 +17,7 @@ const { sections } = store as any;
                         sections[sectionIndex].data["portfolio"]
                     }}</a>
                 </div>
-                <Contact />
+                <Contact :sections="sections" />
             </div>
         </div>
         <p class="italic text-gray-800 mt-3">{{ sections[sectionIndex].data["summary"] }}</p>

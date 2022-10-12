@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useMainStore } from "@/stores/main";
 import Header from "@/components/preview/general/Header.vue";
 
-const store = useMainStore();
-const { sections } = store as any;
+const props = defineProps(["sections", "sectionIndex"]);
 </script>
 <template>
     <div>

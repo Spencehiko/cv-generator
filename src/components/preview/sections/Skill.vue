@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { useMainStore, experienceOptions } from "@/stores/main";
+import { experienceOptions } from "@/stores/main";
 import Header from "@/components/preview/general/Header.vue";
 
-const props = defineProps(["sectionIndex"]);
-const store = useMainStore();
-const { sections } = store as any;
+const props = defineProps(["sections", "sectionIndex"]);
 </script>
 <template>
     <div class="mt-2">
