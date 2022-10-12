@@ -17,3 +17,9 @@ Then, you are ready to give it a shot! Just type
 
     npm run serve
 and you will see the project in your browser!
+
+![Screenshot_1](https://user-images.githubusercontent.com/40501852/195467511-b94ce873-7119-4878-8a22-0ab335ec3faa.png)
+
+![image](https://user-images.githubusercontent.com/40501852/195467500-1c48d057-74c9-4f9b-b46a-25c7dbbe29b8.png)
+
+New template styles will be added...
