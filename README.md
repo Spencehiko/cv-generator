@@ -3,7 +3,7 @@
 
 **Tech Stack: Vue 3 Composition API, Pinia, Tailwind CSS**
 
-Hi! I developed a cv app to generate simple but good lookingCVs.
+Hi! I developed a CV app to generate simple but good looking CVs.
 
 If you want to try it out you can simply click **Code > Copy Icon** and go to your Terminal/Cmd etc.
 
