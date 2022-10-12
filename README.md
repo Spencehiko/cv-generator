@@ -1,5 +1,5 @@
 # cv-generator
-**Live Demo:  [Hikotify](http://cv.hicaku.com/)**
+**Live Demo:  [CV Generator](http://cv.hicaku.com/)**
 
 **Tech Stack: Vue 3 Composition API, Pinia, Tailwind CSS**
 
