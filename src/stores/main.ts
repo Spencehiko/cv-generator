@@ -478,12 +478,40 @@ export const defaultSections = [
         },
         data: [
             {
-                name: "1st Project Name",
-                link: "https://firstproject.com/",
+                name: "CV Generator",
+                link: "https://cv.hicaku.com/",
             },
             {
-                name: "2nd Project Name",
-                link: "https://secondproject.com/",
+                name: "Infinite Wordle",
+                link: "https://wordle.hicaku.com/",
+            },
+            {
+                name: "Hikotify",
+                link: "https://hikotify.hicaku.com/",
+            },
+            {
+                name: "Solitaire",
+                link: "https://solitaire.hicaku.com/",
+            },
+            {
+                name: "Last 6000 Earthquakes Map",
+                link: "https://earthquakes.hicaku.com/",
+            },
+            {
+                name: "Tic Tac Toe",
+                link: "https://tictactoe.hicaku.com/",
+            },
+            {
+                name: "Pixselect Case Study",
+                link: "https://pixcase.hicaku.com/",
+            },
+            {
+                name: "Hibu",
+                link: "https://hibu.hicaku.com/",
+            },
+            {
+                name: "Calculator",
+                link: "https://calculator.hicaku.com/",
             },
         ],
         isHidden: true,
@@ -634,7 +662,7 @@ export const useMainStore = defineStore({
     getters: {},
     actions: {
         setDefaultSections() {
-            this.sections = defaultSections;
+            this.sections = JSON.parse(JSON.stringify(defaultSections));
         },
         // Header Button Actions
         exportCV() {

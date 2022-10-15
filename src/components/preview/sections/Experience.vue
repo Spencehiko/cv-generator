@@ -15,7 +15,7 @@ const props = defineProps(["sections", "sectionIndex"]);
                         {{ data["companyName"] }}
                         <span class="text-gray-400"> - {{ (workStyleOptions as any)[data.workStyle] }}</span>
                     </span>
-                    <div class="flex flex-row gap-1">
+                    <div class="flex flex-row gap-1 items-center">
                         <span class="text-gray-500 text-lg">
                             {{ (data["startDate"].month + 1 < 10 ? "0" + (data["startDate"].month + 1) : data["startDate"].month + 1) + "/" + data["startDate"].year }}
                         </span>
