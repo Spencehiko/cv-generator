@@ -30,7 +30,7 @@ onMounted(() => {
         <header class="sticky top-0 z-50 print:hidden">
             <HeaderMenu />
         </header>
-        <body class="relative pb-4">
+        <body class="relative pb-4 bg-white">
             <AllSections v-if="activeHeader === 'edit'" />
             <PreviewPage
                 v-else-if="activeHeader === 'preview'"
