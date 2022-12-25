@@ -13,9 +13,7 @@ const props = defineProps(["sections", "sectionIndex"]);
             <div class="flex flex-col gap-1 pl-5 border-l justify-center">
                 <div class="flex flex-row gap-2 items-center">
                     <span class="w-8"><font-awesome-icon icon="fa-solid fa-globe" /></span>
-                    <a v-if="sections[sectionIndex].data['portfolio']" :href="sections[sectionIndex].data['portfolio']" target="_blank" class="text-blue-500">{{
-                        sections[sectionIndex].data["portfolio"]
-                    }}</a>
+                    <a v-if="sections[sectionIndex].data['portfolio']" :href="sections[sectionIndex].data['portfolio']" target="_blank">{{ sections[sectionIndex].data["portfolio"] }}</a>
                 </div>
                 <Contact :sections="sections" />
             </div>

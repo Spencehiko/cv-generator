@@ -62,7 +62,7 @@ export const defaultSections = [
                 type: "textarea",
                 inputType: "",
                 inputLabel: "Summary",
-                required: true,
+                required: false,
             },
             portfolio: {
                 type: "input",
@@ -292,16 +292,27 @@ export const defaultSections = [
         },
         data: [
             {
+                companyName: "GoArt Metaverse",
+                title: "Frontend Developer",
+                startDate: { month: 0, year: 2023 },
+                endDate: null,
+                companyLocation: "Remote/Turkey",
+                companyWebsite: "https://www.goartmetaverse.com/",
+                workStyle: "fulltime",
+                summary: "-",
+                isStillWorkingHere: true,
+            },
+            {
                 companyName: "Huawei",
                 title: "Frontend Developer",
                 startDate: { month: 0, year: 2021 },
-                endDate: null,
+                endDate: { month: 11, year: 2022 },
                 companyLocation: "Remote/Turkey",
                 companyWebsite: "https://huawei.com/",
                 workStyle: "fulltime",
                 summary:
-                    "Currently I am working in Huawei as a frontend Developer. We developed several tools for Petal Maps. Although we had a small team of developers, we managed to overcome tough obstacles on our way. I won a Future Star Award at the end of 2021.",
-                isStillWorkingHere: true,
+                    "I worked in Huawei as a frontend Developer. We developed several tools for Petal Maps. Although we had a small team of developers, we managed to overcome tough obstacles on our way. I won a Future Star Award at the end of 2021.",
+                isStillWorkingHere: false,
             },
             {
                 companyName: "Firmasoft",
@@ -375,26 +386,32 @@ export const defaultSections = [
                 name: "TypeScript",
                 skill: 6,
                 experience: 2,
-                summary: "I have been working with TypeScript implemented in Vue.js and I have built global scale projects with it in my previous job experiences.",
+                summary: "While using Vue.js I used TypeScript alongside and I have built global scale projects with it in my previous job experiences.",
             },
             {
                 name: "JavaScript",
                 skill: 8,
                 experience: 3,
-                summary: "I have been working on this subject for over 4 years and I have built global scale projects with it in my previous job experiences.",
-            },
-            {
-                name: "Tailwind CSS",
-                skill: 6,
-                experience: 1,
-                summary: "I am using Tailwind CSS in my personal projects and I have built several apps with it.",
+                summary: "For over 4 years, I have been working on this subject and I have built global scale projects with it in my previous job experiences.",
             },
             {
                 name: "HTML/CSS",
                 skill: 9,
                 experience: 3,
                 summary:
-                    "For many years, I have worked with HTML and CSS. I have a really good understanding of the correlation between them and I can code a design for the web page easily. I know LESS as well.",
+                    "For many years, I have worked with HTML and CSS. I have a really good understanding of the correlation between them and I can code a design for the web page easily. I worked with CSS Preprocessors like LESS and SCSS as well.",
+            },
+            {
+                name: "Tailwind CSS",
+                skill: 6,
+                experience: 1,
+                summary: "Almost for a year, I am using Tailwind CSS in my personal projects and I have built several apps with it.",
+            },
+            {
+                name: "React.js",
+                skill: 3,
+                experience: 1,
+                summary: "I used React.js for a short time in a company and I am trying to learn React.js on my own. Following a lecture from Udemy to improve my skills.",
             },
             {
                 name: "GitHub",
@@ -410,7 +427,7 @@ export const defaultSections = [
                     "I have worked with PHP and MySQL for over 2 years and I have built several CMSs with it. I am familiar with OOP and API structures of PHP. Also I have the knowledge of queries and data management in MySQL ",
             },
             {
-                name: "Web Testing Tools",
+                name: "Testing Tools",
                 skill: 4,
                 experience: 1,
                 summary: "I used Jest for unit testing and Cypress for end-to-end testing. I have the basic knowledge of them.",
@@ -639,12 +656,40 @@ export const defaultSections = [
     },
 ] as Array<Section>;
 
+export const themes = {
+    basic: {
+        name: "Basic",
+        type: "light",
+        photoPath: "basic.png",
+        hasPhotoArea: false,
+    },
+    dark: {
+        name: "Dark",
+        type: "dark",
+        photoPath: "basic.png",
+        hasPhotoArea: false,
+    },
+    simple: {
+        name: "Simple",
+        type: "light",
+        photoPath: "basic.png",
+        hasPhotoArea: false,
+    },
+    simpleDark: {
+        name: "Simple Dark",
+        type: "dark",
+        photoPath: "basic.png",
+        hasPhotoArea: false,
+    },
+} as any;
+
 export const useMainStore = defineStore({
     id: "store",
     state: () => ({
         activeHeader: "edit" as "edit" | "preview",
         sections: [] as Array<Section>,
         scrollPosition: 0 as number,
+        activeTheme: "basic" as String,
         // edit section
         activeSectionIndex: -1 as number,
         activeSectionData: [] as Array<any>,

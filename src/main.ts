@@ -19,6 +19,7 @@ import {
     faCaretDown,
     faX,
     // section titles
+    faBrush,
     faHouse,
     faEnvelope,
     faIdCard,
@@ -32,6 +33,9 @@ import {
     faGlobe,
     faPhone,
     faLocationPin,
+    // card icons
+    faSun,
+    faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faLinkedin, faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
@@ -47,6 +51,7 @@ library.add(
     faCaretDown,
     faX,
     // section titles,
+    faBrush,
     faHouse,
     faEnvelope,
     faIdCard,
@@ -64,7 +69,10 @@ library.add(
     faTwitter,
     faLinkedin,
     faGithub,
-    faYoutube
+    faYoutube,
+    // card icons
+    faSun,
+    faMoon
 );
 /*  Date Picker    */
 import Datepicker from "@vuepic/vue-datepicker";
