@@ -21,6 +21,16 @@ import darkReference from "@/components/preview/dark/sections/Reference.vue";
 import darkCertificate from "@/components/preview/dark/sections/Certificate.vue";
 import darkProject from "@/components/preview/dark/sections/Project.vue";
 
+/* simple */
+import simpleGeneral from "@/components/preview/simple/sections/General.vue";
+import simplePersonal from "@/components/preview/simple/sections/Personal.vue";
+import simpleExperience from "@/components/preview/simple/sections/Experience.vue";
+import simpleSkill from "@/components/preview/simple/sections/Skill.vue";
+import simpleLanguage from "@/components/preview/simple/sections/Language.vue";
+import simpleReference from "@/components/preview/simple/sections/Reference.vue";
+import simpleCertificate from "@/components/preview/simple/sections/Certificate.vue";
+import simpleProject from "@/components/preview/simple/sections/Project.vue";
+
 const allSections: any = {
     basicGeneral,
     basicPersonal,
@@ -38,6 +48,14 @@ const allSections: any = {
     darkReference,
     darkCertificate,
     darkProject,
+    simpleGeneral,
+    simplePersonal,
+    simpleExperience,
+    simpleSkill,
+    simpleLanguage,
+    simpleReference,
+    simpleCertificate,
+    simpleProject,
 };
 
 const store = useMainStore();

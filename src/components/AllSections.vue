@@ -34,8 +34,8 @@ const { toggleHideSection, openAddDialog, openEditSectionDialog } = store;
             <div class="my-5">
                 <div class="flex flex-row flex-wrap gap-5">
                     <button v-for="(theme, index) in themes" :key="index" class="border rounded-lg w-1/2-5 group relative sm:w-1/4-5" @click="activeTheme = index.toString()">
-                        <div class="p-5 group-hover:opacity-0 duration-500 transition-all">
-                            <img :src="theme.photoPath" class="w-full h-auto" />
+                        <div class="p-5 group-hover:opacity-0 duration-500 transition-all w-full">
+                            <img :src="theme.photoPath" class="w-full h-96 rounded-lg" />
                         </div>
                         <div
                             class="p-5 flex flex-col gap-5 opacity-0 group-hover:opacity-100 duration-500 transition-all w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -44,8 +44,8 @@ const { toggleHideSection, openAddDialog, openEditSectionDialog } = store;
                             <font-awesome-icon v-else icon="fa-solid fa-moon" />
                             <span>{{ theme.hasPhotoArea ? "Has" : "Has No" }} Photo Area</span>
                         </div>
-                        <button class="w-full border-t rounded-b-lg text-white" :class="[activeTheme !== index.toString() ? 'bg-blue-600' : 'bg-green-600']" @click="activeTheme = index.toString()">
-                            {{ activeTheme !== index.toString() ? theme.name : "SELECTED" }}
+                        <button class="w-full border-t rounded-b-lg text-white" :class="[activeTheme !== index.toString() ? 'bg-blue-700' : 'bg-green-600']" @click="activeTheme = index.toString()">
+                            {{ theme.name }}
                         </button>
                     </button>
                 </div>

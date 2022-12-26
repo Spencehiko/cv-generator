@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Header from "@/components/preview/dark/general/Header.vue";
+import Header from "@/components/preview/simple/general/Header.vue";
 
 const props = defineProps(["sections", "sectionIndex"]);
 </script>
@@ -14,7 +14,7 @@ const props = defineProps(["sections", "sectionIndex"]);
                         <span class="text-gray-400"> - {{ data.givenBy }}</span>
                     </span>
                     <div class="flex flex-row gap-1">
-                        <span class="text-gray-400 text-lg">
+                        <span class="text-gray-500 text-lg">
                             {{ (data["date"].month + 1 < 10 ? "0" + (data["date"].month + 1) : data["date"].month + 1) + "/" + data["date"].year }}
                         </span>
                     </div>
