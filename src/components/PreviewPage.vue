@@ -1,28 +1,47 @@
 <script setup lang="ts">
 import { useMainStore } from "@/stores/main";
 
-import General from "@/components/preview/sections/General.vue";
-import Personal from "@/components/preview/sections/Personal.vue";
-import Experience from "@/components/preview/sections/Experience.vue";
-import Skill from "@/components/preview/sections/Skill.vue";
-import Language from "@/components/preview/sections/Language.vue";
-import Reference from "@/components/preview/sections/Reference.vue";
-import Certificate from "@/components/preview/sections/Certificate.vue";
-import Project from "@/components/preview/sections/Project.vue";
+/* basic */
+import basicGeneral from "@/components/preview/basic/sections/General.vue";
+import basicPersonal from "@/components/preview/basic/sections/Personal.vue";
+import basicExperience from "@/components/preview/basic/sections/Experience.vue";
+import basicSkill from "@/components/preview/basic/sections/Skill.vue";
+import basicLanguage from "@/components/preview/basic/sections/Language.vue";
+import basicReference from "@/components/preview/basic/sections/Reference.vue";
+import basicCertificate from "@/components/preview/basic/sections/Certificate.vue";
+import basicProject from "@/components/preview/basic/sections/Project.vue";
+
+/* dark */
+import darkGeneral from "@/components/preview/dark/sections/General.vue";
+import darkPersonal from "@/components/preview/dark/sections/Personal.vue";
+import darkExperience from "@/components/preview/dark/sections/Experience.vue";
+import darkSkill from "@/components/preview/dark/sections/Skill.vue";
+import darkLanguage from "@/components/preview/dark/sections/Language.vue";
+import darkReference from "@/components/preview/dark/sections/Reference.vue";
+import darkCertificate from "@/components/preview/dark/sections/Certificate.vue";
+import darkProject from "@/components/preview/dark/sections/Project.vue";
 
 const allSections: any = {
-    General,
-    Personal,
-    Experience,
-    Skill,
-    Language,
-    Reference,
-    Certificate,
-    Project,
+    basicGeneral,
+    basicPersonal,
+    basicExperience,
+    basicSkill,
+    basicLanguage,
+    basicReference,
+    basicCertificate,
+    basicProject,
+    darkGeneral,
+    darkPersonal,
+    darkExperience,
+    darkSkill,
+    darkLanguage,
+    darkReference,
+    darkCertificate,
+    darkProject,
 };
 
 const store = useMainStore();
-const { sections } = store;
+const { sections, activeTheme } = store;
 const deepCloneSections = JSON.parse(JSON.stringify(sections));
 deepCloneSections.filter((element: any, index: any) => {
     if (!element.data.length) {
@@ -36,27 +55,34 @@ deepCloneSections.filter((element: any, index: any) => {
 </script>
 
 <template>
-    <div>
-        <div
-            v-for="(section, index) in deepCloneSections"
-            :key="index"
-            :class="[section.name !== 'Experience' ? 'mt-5 print:mt-1' : '', section.name !== 'General' ? 'mb-5 print:mb-1' : ' mb-3 print:mb-0']"
-            class="hidden sm:block print:block"
-        >
-            <component
-                v-if="!section.isHidden && section.previewComponent"
-                :is="(allSections[section.previewComponent as any])"
-                :class="[section.name !== 'Experience' ? 'mt-3 print:mt-1' : '', section.name !== 'General' ? 'mb-3 print:mb-1 print:text-sm' : ' mb-1']"
-                :sectionIndex="index"
-                :sections="deepCloneSections"
-            ></component>
+    <div
+        class="p-2 h-full border-t-2 break-words sm:px-5 lg:px-20 print:px-10 print:border-none print:m-0"
+        :class="[activeTheme === 'dark' ? 'bg-slate-900 text-white print:bg-slate-900 border-white' : 'border-black']"
+    >
+        <div class="page-break-always w-full h-full hidden sm:block print:block">
+            <div
+                v-for="(section, index) in deepCloneSections"
+                :key="index"
+                :class="[section.name !== 'Experience' ? 'mt-5 print:mt-1' : '', section.name !== 'General' ? 'mb-5 print:mb-1' : ' mb-3 print:mb-0']"
+            >
+                <component
+                    v-if="!section.isHidden && section.previewComponent"
+                    :is="(allSections[activeTheme + section.previewComponent as any])"
+                    :class="[section.name !== 'Experience' ? 'mt-3 print:mt-1' : '', section.name !== 'General' ? 'mb-3 print:mb-1 print:text-sm' : ' mb-1']"
+                    :sectionIndex="index"
+                    :sections="deepCloneSections"
+                ></component>
+            </div>
         </div>
         <div class="text-center w-full font-bold sm:hidden print:hidden">Cannot preview on small screens</div>
-        <span class="hidden text-xs w-full text-center italic mt-5 print:block">This CV is created with <a href="https://cv.hicaku.com/" class="text-blue-500">cv.hicaku.com</a></span>
+        <div class="hidden text-xs w-full text-center align-middle italic bottom-2 print:block">This CV is created with <a href="https://cv.hicaku.com/" class="text-blue-500">cv.hicaku.com</a></div>
     </div>
 </template>
 <style lang="css">
 .page-break-inside-avoid {
     page-break-inside: avoid;
+}
+.page-break-always {
+    page-break-after: always;
 }
 </style>

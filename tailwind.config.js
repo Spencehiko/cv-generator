@@ -12,6 +12,7 @@ module.exports = {
             width: {
                 "full-20": "calc(100% - 5rem)",
                 "1/4-5": "calc(25% - 1rem)",
+                "1/2-5": "calc(50% - 1rem)",
             },
             borderWidth: {
                 12: "12px",

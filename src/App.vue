@@ -30,12 +30,9 @@ onMounted(() => {
         <header class="sticky top-0 z-50 print:hidden">
             <HeaderMenu />
         </header>
-        <body class="relative pb-4 bg-white">
+        <body class="relative">
             <AllSections v-if="activeHeader === 'edit'" />
-            <PreviewPage
-                v-else-if="activeHeader === 'preview'"
-                class="mx-10 my-5 px-2 border-black sm:px-5 sm:mx-5-percent sm:border md:mx-10-percent lg:mx-20-percent lg:px-20 print:px-10 print:border-none print:m-0 break-words"
-            />
+            <PreviewPage v-else-if="activeHeader === 'preview'" />
         </body>
     </div>
     <EditSection v-if="activeSectionIndex !== -1" />
@@ -43,9 +40,14 @@ onMounted(() => {
     <AddData v-if="activeAddSectionIndex !== -1" />
 </template>
 <style lang="css">
+body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
 @media print {
     @page {
-        margin: 0.5cm;
+        margin: 0cm;
     }
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Contact from "@/components/preview/sections/Contact.vue";
+import Contact from "@/components/preview/dark/sections/Contact.vue";
 
 const props = defineProps(["sections", "sectionIndex"]);
 </script>
@@ -8,7 +8,7 @@ const props = defineProps(["sections", "sectionIndex"]);
         <div class="flex flex-row justify-between">
             <div class="flex flex-col gap-2 pr-5">
                 <span class="text-5xl print:text-4xl font-bold">{{ sections[sectionIndex].data["firstName"] + " " + sections[sectionIndex].data["lastName"] }}</span>
-                <span class="text-2xl text-gray-500">{{ sections[sectionIndex].data["title"] }}</span>
+                <span class="text-2xl text-gray-300">{{ sections[sectionIndex].data["title"] }}</span>
             </div>
             <div class="flex flex-col gap-1 pl-5 border-l justify-center">
                 <div class="flex flex-row gap-2 items-center">
@@ -18,6 +18,6 @@ const props = defineProps(["sections", "sectionIndex"]);
                 <Contact :sections="sections" />
             </div>
         </div>
-        <p class="italic text-gray-800 mt-3">{{ sections[sectionIndex].data["summary"] }}</p>
+        <p class="italic text-gray-300 mt-3">{{ sections[sectionIndex].data["summary"] }}</p>
     </div>
 </template>

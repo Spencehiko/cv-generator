@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Header from "@/components/preview/general/Header.vue";
+import Header from "@/components/preview/dark/general/Header.vue";
 
 const props = defineProps(["sections", "sectionIndex"]);
 </script>

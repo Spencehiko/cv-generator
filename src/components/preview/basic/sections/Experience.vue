@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { workStyleOptions } from "@/stores/main";
-import Header from "@/components/preview/general/Header.vue";
-import Education from "@/components/preview/sections/Education.vue";
+import Header from "@/components/preview/basic/general/Header.vue";
+import Education from "@/components/preview/basic/sections/Education.vue";
 
 const props = defineProps(["sections", "sectionIndex"]);
 </script>

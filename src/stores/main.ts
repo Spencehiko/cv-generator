@@ -666,7 +666,7 @@ export const themes = {
     dark: {
         name: "Dark",
         type: "dark",
-        photoPath: "basic.png",
+        photoPath: "dark.png",
         hasPhotoArea: false,
     },
     simple: {
@@ -678,7 +678,7 @@ export const themes = {
     simpleDark: {
         name: "Simple Dark",
         type: "dark",
-        photoPath: "basic.png",
+        photoPath: "dark.png",
         hasPhotoArea: false,
     },
 } as any;
