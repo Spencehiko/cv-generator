@@ -47,7 +47,7 @@ body {
 
 @media print {
     @page {
-        margin: 0cm;
+        margin: 0;
     }
 }
 </style>

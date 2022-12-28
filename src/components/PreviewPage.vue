@@ -31,6 +31,16 @@ import simpleReference from "@/components/preview/simple/sections/Reference.vue"
 import simpleCertificate from "@/components/preview/simple/sections/Certificate.vue";
 import simpleProject from "@/components/preview/simple/sections/Project.vue";
 
+/* sidebar */
+import sidebarGeneral from "@/components/preview/sidebar/sections/General.vue";
+import sidebarPersonal from "@/components/preview/sidebar/sections/Personal.vue";
+import sidebarExperience from "@/components/preview/sidebar/sections/Experience.vue";
+import sidebarSkill from "@/components/preview/sidebar/sections/Skill.vue";
+import sidebarLanguage from "@/components/preview/sidebar/sections/Language.vue";
+import sidebarReference from "@/components/preview/sidebar/sections/Reference.vue";
+import sidebarCertificate from "@/components/preview/sidebar/sections/Certificate.vue";
+import sidebarProject from "@/components/preview/sidebar/sections/Project.vue";
+
 const allSections: any = {
     basicGeneral,
     basicPersonal,
@@ -56,6 +66,7 @@ const allSections: any = {
     simpleReference,
     simpleCertificate,
     simpleProject,
+    sidebarGeneral,
 };
 
 const store = useMainStore();
@@ -77,7 +88,7 @@ deepCloneSections.filter((element: any, index: any) => {
         class="p-2 h-full border-t-2 break-words sm:px-5 lg:px-20 print:px-10 print:border-none print:m-0"
         :class="[activeTheme === 'dark' ? 'bg-slate-900 text-white print:bg-slate-900 border-white' : 'border-black']"
     >
-        <div class="page-break-always w-full h-full hidden sm:block print:block">
+        <div class="w-full h-full hidden page-break-always sm:block print:block">
             <div
                 v-for="(section, index) in deepCloneSections"
                 :key="index"
@@ -93,7 +104,7 @@ deepCloneSections.filter((element: any, index: any) => {
             </div>
         </div>
         <div class="text-center w-full font-bold sm:hidden print:hidden">Cannot preview on small screens</div>
-        <div class="hidden text-xs w-full text-center align-middle italic bottom-2 print:block">This CV is created with <a href="https://cv.hicaku.com/" class="text-blue-500">cv.hicaku.com</a></div>
+        <div class="hidden text-xs w-full text-center italic mt-5 print:block">This CV is created with <a href="https://cv.hicaku.com/" class="text-blue-500">cv.hicaku.com</a></div>
     </div>
 </template>
 <style lang="css">

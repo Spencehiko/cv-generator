@@ -70,6 +70,12 @@ export const defaultSections = [
                 inputLabel: "Portfolio Link",
                 required: false,
             },
+            profilePP: {
+                type: "input",
+                inputType: "text",
+                inputLabel: "Profile Photo PP",
+                required: false,
+            },
             schoolStatus: {
                 type: "input",
                 inputType: "checkbox",
@@ -114,6 +120,7 @@ export const defaultSections = [
             summary:
                 "A passionate Frontend Developer who is keen to learn new technologies. Worked over 3 years in different scale of companies and developed big scaled projects. Open to new ideas and willing to use my skills combined with well-thought projects. Looking forward to taking my current skills to upper levels and benefit both myself and the company I am working.",
             portfolio: "https://hicaku.com",
+            profilePP: "",
             schoolStatus: true,
             schoolName: "Istanbul Technical University",
             schoolDepartmant: "Mathematics Engineering",
@@ -675,11 +682,11 @@ export const themes = {
         photoPath: "coming-soon.png",
         hasPhotoArea: false,
     },
-    simpleDark: {
-        name: "Simple Dark",
-        type: "dark",
+    sidebar: {
+        name: "Sidebar",
+        type: "light",
         photoPath: "coming-soon.png",
-        hasPhotoArea: false,
+        hasPhotoArea: true,
     },
 } as any;
 

@@ -18,6 +18,7 @@ module.exports = {
                 12: "12px",
             },
             margin: {
+                "50-percent": "50%",
                 "20-percent": "20%",
                 "10-percent": "10%",
                 "5-percent": "5%",
