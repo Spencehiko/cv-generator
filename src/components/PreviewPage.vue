@@ -88,7 +88,7 @@ deepCloneSections.filter((element: any, index: any) => {
         class="p-2 h-full border-t-2 break-words sm:px-5 lg:px-20 print:px-10 print:border-none print:m-0"
         :class="[activeTheme === 'dark' ? 'bg-slate-900 text-white print:bg-slate-900 border-white' : 'border-black']"
     >
-        <div class="w-full h-full hidden page-break-always sm:block print:block">
+        <div class="w-full h-full hidden page-break-always sm:block print:block print:p-5">
             <div
                 v-for="(section, index) in deepCloneSections"
                 :key="index"
@@ -104,7 +104,7 @@ deepCloneSections.filter((element: any, index: any) => {
             </div>
         </div>
         <div class="text-center w-full font-bold sm:hidden print:hidden">Cannot preview on small screens</div>
-        <div class="hidden text-xs w-full text-center italic mt-5 print:block">This CV is created with <a href="https://cv.hicaku.com/" class="text-blue-500">cv.hicaku.com</a></div>
+        <!-- <div class="hidden text-xs w-full text-center italic mt-5 print:block">This CV is created with <a href="https://cv.hicaku.com/" class="text-blue-500">cv.hicaku.com</a></div> -->
     </div>
 </template>
 <style lang="css">

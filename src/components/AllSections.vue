@@ -35,7 +35,7 @@ const { toggleHideSection, openAddDialog, openEditSectionDialog } = store;
                 <div class="flex flex-row flex-wrap gap-5">
                     <button v-for="(theme, index) in themes" :key="index" class="border rounded-lg w-1/2-5 group relative sm:w-1/4-5" @click="activeTheme = index.toString()">
                         <div class="p-5 group-hover:opacity-0 duration-500 transition-all w-full">
-                            <img :src="theme.photoPath" class="w-full h-72 rounded-lg" />
+                            <img :src="theme.photoPath" class="w-full h-80 rounded-lg" />
                         </div>
                         <div
                             class="p-5 flex flex-col gap-5 opacity-0 group-hover:opacity-100 duration-500 transition-all w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"

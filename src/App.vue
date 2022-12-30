@@ -46,8 +46,12 @@ body {
 }
 
 @media print {
+    html,
+    body {
+        height: 200vh;
+    }
     @page {
-        margin: 0;
+        margin: 0cm;
     }
 }
 </style>
